@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "513754674404",
+    "project_id": "kolaypara-c34a0",
+    "storage_bucket": "kolaypara-c34a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513754674404:android:a46ae4e5904578bb87a8f1",
+        "android_client_info": {
+          "package_name": "com.example.kolaypara"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513754674404-9g0v19018psg4s0mej6onj014tv5t1up.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuKcN7R6Voyb_JbpMNMXBohz6b3rGkcwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513754674404-9g0v19018psg4s0mej6onj014tv5t1up.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

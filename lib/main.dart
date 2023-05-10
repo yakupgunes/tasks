@@ -1,22 +1,25 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, depend_on_referenced_packages
-import 'package:firebase_core/firebase_core.dart';
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:kolaypara/src/features/authentication/screens/welcome/welcome_screen.dart';
 
-import 'auth/main_page.dart';
+import 'src/utils/theme/theme.dart';
 
-Future main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-
-  runApp(MyApp());
+void main() {
+  runApp(const App());
 }
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MainPage(),
+    return GetMaterialApp(
+      theme: TAppTheme.lightTheme,
+      darkTheme: TAppTheme.darkTheme,
+      themeMode: ThemeMode.system,
+      home: WelcomeScreen(),
     );
   }
 }
