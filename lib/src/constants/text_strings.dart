@@ -1,10 +1,12 @@
 //App Text Strings
+const String tAppName = ".paraKazan/";
+const String tAppTagLine = "Görevleri Uygula.\nParanı Hemen Kazan!";
 
 // -- Welcome Screen Text
-const String tWelcomeTitle = "Para Kazanmanın Kolay Yolu";
+const String tWelcomeTitle = "PARA KAZANMANIN KOLAY YOLU";
 const String tWelcomeSubTitle =
-    "Sen de hemen görevleri tamamla ve paranı kolayca kazan.";
+    "Sana verilen görevleri hemen tamamla ve paranı kolayca kazan.";
 
 // -- Generic Text
-const String tLogin = "Login";
-const String tSignup = "Signup";
+const String tLogin = "Gİrİş Yap";
+const String tSignup = "Kayıt Ol";

@@ -1,7 +1,7 @@
 /* -- İMAGE SCREENS -- */
 
-const String tSplashTopIcon = "assets/images/splash-top-icon.jpg";
-const String tSplashImage = "assets/images/splash-screen-image.jpg";
+//const String tSplashTopIcon = "assets/images/splash-top-icon.png";
+const String tSplashImage = "assets/images/splash-screen-image.png";
 
 const String tOnBoardingImage1 =
     "assets/images/on_boarding_images/on-boarding-image-1.jpg";

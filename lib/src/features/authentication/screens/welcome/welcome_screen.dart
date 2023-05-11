@@ -1,7 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kolaypara/src/common_widgets/fade_in_animation/animation_desing.dart';
+import 'package:kolaypara/src/common_widgets/fade_in_animation/fade_in_animation_controller.dart';
+import 'package:kolaypara/src/common_widgets/fade_in_animation/fade_in_animation_model.dart';
 import 'package:kolaypara/src/constants/colors.dart';
 import 'package:kolaypara/src/constants/image_strings.dart';
 import 'package:kolaypara/src/constants/sizes.dart';
@@ -12,55 +16,79 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(FadeInAnimationController());
+    controller.startAnimation();
+
     var mediaQuery = MediaQuery.of(context);
     var height = mediaQuery.size.height;
     var brightness = mediaQuery.platformBrightness;
     final isDarkMode = brightness == Brightness.dark;
+
     return Scaffold(
       backgroundColor: isDarkMode ? tSecondaryColor : tPrimaryColor,
-      body: Container(
-        padding: EdgeInsets.all(tDefaultSize),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Image(
-              image: AssetImage(tWelcomeScreenImage),
-              height: height * 0.6,
+      body: Stack(
+        children: [
+          TFadeInAnimation(
+            durationInMs: 1200,
+            animate: TAnimatePosition(
+              bottomAfter: 0,
+              bottomBefore: -100,
+              leftBefore: 0,
+              leftAfter: 0,
+              topAfter: 0,
+              topBefore: 0,
+              rightAfter: 0,
+              rightBefore: 0,
             ),
-            Column(
-              children: [
-                Text(
-                  tWelcomeTitle,
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                Text(
-                  tWelcomeSubTitle,
-                  style: Theme.of(context).textTheme.bodySmall,
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    child: Text(tLogin.toUpperCase()),
+            child: Container(
+              padding: EdgeInsets.all(tDefaultSize),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Hero(
+                    tag: 'welcome-image-tag',
+                    child: Image(
+                      image: AssetImage(tWelcomeScreenImage),
+                      height: height * 0.6,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text(tSignup.toUpperCase()),
+                  Column(
+                    children: [
+                      Text(
+                        tWelcomeTitle,
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                      Text(
+                        tWelcomeSubTitle,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                  Row(
+                    children: [
+                      Expanded(
+                        child: OutlinedButton(
+                          onPressed: () {},
+                          child: Text(tLogin.toUpperCase()),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: Text(tSignup.toUpperCase()),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
