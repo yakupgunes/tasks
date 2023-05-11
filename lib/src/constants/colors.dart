@@ -12,5 +12,5 @@ const tDarkColor = Color(0xFF000000);
 
 // -- ON-BOARDING COLORS
 const tOnBoardingPage1Color = Colors.white;
-const tOnBoardingPage2Color = Color(0xfffddcdf);
-const tOnBoardingPage3Color = Color(0xffffdcbd);//
+const tOnBoardingPage2Color = Color(0xfffddcdf); //
+const tOnBoardingPage3Color = Color(0xffffdcbd);
