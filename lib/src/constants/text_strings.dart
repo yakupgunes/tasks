@@ -10,3 +10,9 @@ const String tWelcomeSubTitle =
 // -- Generic Text
 const String tLogin = "Gİrİş Yap";
 const String tSignup = "Kayıt Ol";
+
+//-- Login Screen Text
+const String tLoginTitle = "Tekrar Hoş Geldiniz,";
+const String tLoginSubTitle = "Hesabınıza girin, kazanmaya başlayın.";
+const String tRememberMe = "Tekrar Hoş Geldiniz,";
+const String tAlreadyHaveAnAccount = "Zaten Üyeliğiniz var mı?";

@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:kolaypara/src/common_widgets/fade_in_animation/animation_desing.dart';
 import 'package:kolaypara/src/common_widgets/fade_in_animation/fade_in_animation_controller.dart';
 import 'package:kolaypara/src/common_widgets/fade_in_animation/fade_in_animation_model.dart';
@@ -10,6 +9,7 @@ import 'package:kolaypara/src/constants/colors.dart';
 import 'package:kolaypara/src/constants/image_strings.dart';
 import 'package:kolaypara/src/constants/sizes.dart';
 import 'package:kolaypara/src/constants/text_strings.dart';
+import 'package:kolaypara/src/features/authentication/screens/login/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -69,7 +69,7 @@ class WelcomeScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: OutlinedButton(
-                          onPressed: () {},
+                          onPressed: () => Get.to(() => const LoginScreen()),
                           child: Text(tLogin.toUpperCase()),
                         ),
                       ),
