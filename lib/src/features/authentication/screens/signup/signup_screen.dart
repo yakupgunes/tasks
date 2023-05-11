@@ -121,16 +121,17 @@ class SignUpScreen extends StatelessWidget {
                             onPressed: () {},
                             child: Text.rich(
                               TextSpan(
-                                  text: tAlreadyHaveAnAccount,
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                  children: const [
-                                    TextSpan(
-                                      text: tSignup2,
-                                      style: TextStyle(
-                                        color: Colors.blue,
-                                      ),
+                                text: tAlreadyHaveAnAccount,
+                                style: Theme.of(context).textTheme.bodyLarge,
+                                children: const [
+                                  TextSpan(
+                                    text: tSignup2,
+                                    style: TextStyle(
+                                      color: Colors.blue,
                                     ),
-                                  ]),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
