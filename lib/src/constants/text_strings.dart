@@ -29,3 +29,16 @@ const String tAlreadyHaveAnAccount = "Zaten üyeliğiniz var mı? ";
 const String tLogin2 = "Giriş yapın";
 const String tFullName = "Ad Soyad";
 const String tPhoneNumber = "Cep Telefonu";
+
+//-- Forget Password Text
+const String tForgetPasswordTitle = "Seçiminizi yapınız!";
+const String tForgetPasswordSubTitle =
+    "Şifrenizi sıfırlamak için aşağıda verilen seçeneklerden birini seçiniz.";
+const String tResetViaEmail = "E-mail ile şifrenizi sıfırlayın.";
+const String tResetViaPhone = "Telefon numaranız ile şifrenizi sıfırlayın.";
+
+//--Forget Password Via Phone -Text
+const String tForgetPhoneSubTitle = "Kayıtlı telefon numaranızı giriniz.";
+
+//--Forget Password Via Phone -Text
+const String tForgetMailSubTitle = "Kayıtlı e-posta hesabınızı giriniz.";
