@@ -15,4 +15,17 @@ const String tSignup = "Kayıt Ol";
 const String tLoginTitle = "Tekrar Hoş Geldiniz,";
 const String tLoginSubTitle = "Hesabınıza girin, kazanmaya başlayın.";
 const String tRememberMe = "Tekrar Hoş Geldiniz,";
-const String tAlreadyHaveAnAccount = "Zaten Üyeliğiniz var mı?";
+const String tEmail = "E-Posta";
+const String tPassword = "Şifre";
+const String tForgetPassword = "Şifremi unuttum";
+const String tSingInWithGoogle = "Google ile giriş yap";
+const String tDontHaveAnAccount = "Üye değil misiniz? ";
+const String tSignup2 = "Şimdi üye olun";
+
+//-- Sign Up Screen Text
+const String tSignUpTitle = "Hoşgeldiniz,";
+const String tSignUpSubTitle = "Bilgilerinizi girerek kayıt olabilirsiniz.";
+const String tAlreadyHaveAnAccount = "Zaten üyeliğiniz var mı? ";
+const String tLogin2 = "Giriş yapın";
+const String tFullName = "Ad Soyad";
+const String tPhoneNumber = "Cep Telefonu";
