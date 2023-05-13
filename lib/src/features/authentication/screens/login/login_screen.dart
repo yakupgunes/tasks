@@ -1,9 +1,14 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kolaypara/src/constants/image_strings.dart';
 import 'package:kolaypara/src/constants/sizes.dart';
 import 'package:kolaypara/src/constants/text_strings.dart';
+
+import '../forget_password/forget_password_options/forget_password_btn_widget.dart';
+import '../forget_password/forget_password_options/forget_password_model_bottom_sheet.dart';
+import '../signup/signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -35,6 +40,7 @@ class LoginScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextFormField(
+                          keyboardType: TextInputType.emailAddress,
                           decoration: const InputDecoration(
                             prefixIcon: Icon(Icons.person_outline_outlined),
                             labelText: tEmail,
@@ -56,13 +62,18 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: tFormHeight - 20),
+                        //--FORGET PW BUTTON
                         Align(
                           alignment: Alignment.centerRight,
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              ForgetPasswordScreen.buildShowModalBottomSheet(
+                                  context);
+                            },
                             child: const Text(tForgetPassword),
                           ),
                         ),
+                        //--LOGİN BUTTON
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
@@ -79,7 +90,7 @@ class LoginScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () => Get.to(() => const SignUpScreen()),
                     child: Text.rich(
                       TextSpan(
                           text: tDontHaveAnAccount,

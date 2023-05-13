@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kolaypara/src/constants/colors.dart';
 import 'package:kolaypara/src/constants/sizes.dart';
+import 'package:kolaypara/src/features/authentication/controllers/signup_controller.dart';
+import 'package:kolaypara/src/features/authentication/screens/login/login_screen.dart';
 
 import '../../../../constants/image_strings.dart';
 import '../../../../constants/text_strings.dart';
@@ -12,6 +15,8 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignUpController());
+    final _formKey = GlobalKey<FormState>();
     final size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
@@ -32,10 +37,12 @@ class SignUpScreen extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: tFormHeight - 10),
                   child: Form(
+                    key: _formKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextFormField(
+                          controller: controller.fullName,
                           decoration: InputDecoration(
                             label: Text(tFullName),
                             border: OutlineInputBorder(),
@@ -54,6 +61,7 @@ class SignUpScreen extends StatelessWidget {
                           height: tFormHeight - 20,
                         ),
                         TextFormField(
+                          controller: controller.email,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                             label: Text(tEmail),
@@ -73,6 +81,7 @@ class SignUpScreen extends StatelessWidget {
                           height: tFormHeight - 20,
                         ),
                         TextFormField(
+                          controller: controller.phoneNo,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                             label: Text(tPhoneNumber),
@@ -92,6 +101,7 @@ class SignUpScreen extends StatelessWidget {
                           height: tFormHeight - 20,
                         ),
                         TextFormField(
+                          controller: controller.password,
                           obscureText: true,
                           decoration: InputDecoration(
                             label: Text(tPassword),
@@ -111,21 +121,27 @@ class SignUpScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                SignUpController.instance.registerUser(
+                                    controller.email.text.trim(),
+                                    controller.password.text.trim());
+                              }
+                            },
                             child: Text(tSignup.toUpperCase()),
                           ),
                         ),
                         Align(
                           alignment: Alignment.center,
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () => Get.to(() => const LoginScreen()),
                             child: Text.rich(
                               TextSpan(
                                 text: tAlreadyHaveAnAccount,
                                 style: Theme.of(context).textTheme.bodyLarge,
                                 children: const [
                                   TextSpan(
-                                    text: tSignup2,
+                                    text: tLogin2,
                                     style: TextStyle(
                                       color: Colors.blue,
                                     ),

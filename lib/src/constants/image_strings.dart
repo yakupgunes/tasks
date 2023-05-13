@@ -19,4 +19,6 @@ const String tGoogleLogoImage = "assets/logo/google-logo.png";
 
 //--Forget Password İmage
 const String tForgetPasswordImage =
-    "assets/images/forget_password/forget_password.png";
+    "assets/images/forget_password/forget-password.png";
+const String tForgetPasswordVerificationImage =
+    "assets/images/forget_password/forget-password-verification.png";

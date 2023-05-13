@@ -28,17 +28,26 @@ const String tSignUpSubTitle = "Bilgilerinizi girerek kayıt olabilirsiniz.";
 const String tAlreadyHaveAnAccount = "Zaten üyeliğiniz var mı? ";
 const String tLogin2 = "Giriş yapın";
 const String tFullName = "Ad Soyad";
-const String tPhoneNumber = "Cep Telefonu";
+const String tPhoneNumber = "Telefon Numara";
 
 //-- Forget Password Text
 const String tForgetPasswordTitle = "Seçiminizi yapınız!";
 const String tForgetPasswordSubTitle =
     "Şifrenizi sıfırlamak için aşağıda verilen seçeneklerden birini seçiniz.";
-const String tResetViaEmail = "E-mail ile şifrenizi sıfırlayın.";
-const String tResetViaPhone = "Telefon numaranız ile şifrenizi sıfırlayın.";
+const String tResetViaEmail = "E-posta ile şifrenizi sıfırlayın.";
+const String tResetViaPhone = "Telefon numarası ile şifrenizi sıfırlayın.";
+const String tNext = "Sonraki";
+//const String tForgetPasswor
 
 //--Forget Password Via Phone -Text
 const String tForgetPhoneSubTitle = "Kayıtlı telefon numaranızı giriniz.";
 
-//--Forget Password Via Phone -Text
-const String tForgetMailSubTitle = "Kayıtlı e-posta hesabınızı giriniz.";
+//--Forget Password Via Mail -Text
+const String tForgetMailSubTitle =
+    "E-posta adresinize yeni şifre belirlemeniz için bir bağlantı göndereceğiz.";
+
+//--VERİFİCATİON PASSWORD SCREEN - TEXT
+const String tOtpSubTitle = "Doğrulama";
+const String tOtpTitle = "CO\nDE";
+const String tOtpMessage =
+    "Lütfen aşağıdaki alana size gönderilen doğrulama kodunu giriniz.";
