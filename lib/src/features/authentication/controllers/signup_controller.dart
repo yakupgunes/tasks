@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kolaypara/src/repository/authentication_repository/authentication_repository.dart';
 
 class SignUpController extends GetxController {
   static SignUpController get instance => Get.find();
@@ -10,5 +11,15 @@ class SignUpController extends GetxController {
   final fullName = TextEditingController();
   final phoneNo = TextEditingController();
 
-  void registerUser(String email, String password) {}
+  Future<void> registerUser(String email, String password) async {
+    String? error = await AuthenticationRepository.instance
+        .createUserWithEmailAndPassword(email, password);
+    if (error != null) {
+      Get.showSnackbar(GetSnackBar(message: error.toString()));
+    }
+  }
+
+  void phoneAuthentication(String phoneNo) {
+    AuthenticationRepository.instance.phoneAuthentication(phoneNo);
+  }
 }

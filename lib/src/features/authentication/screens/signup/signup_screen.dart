@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,17 +6,16 @@ import 'package:kolaypara/src/constants/colors.dart';
 import 'package:kolaypara/src/constants/sizes.dart';
 import 'package:kolaypara/src/features/authentication/controllers/signup_controller.dart';
 import 'package:kolaypara/src/features/authentication/screens/login/login_screen.dart';
-
 import '../../../../constants/image_strings.dart';
 import '../../../../constants/text_strings.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
+  static final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SignUpController());
-    final _formKey = GlobalKey<FormState>();
     final size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
@@ -126,6 +125,8 @@ class SignUpScreen extends StatelessWidget {
                                 SignUpController.instance.registerUser(
                                     controller.email.text.trim(),
                                     controller.password.text.trim());
+                                //SignUpController.instance.phoneAuthentication(controller.phoneNo.text.trim());
+                                //Get.to(() => OTPScreen());
                               }
                             },
                             child: Text(tSignup.toUpperCase()),

@@ -1,18 +1,17 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:kolaypara/firebase_options.dart';
 import 'package:kolaypara/src/features/authentication/screens/splash_screen/splash_screen.dart';
-
+import 'package:kolaypara/src/repository/authentication_repository/authentication_repository.dart';
 import 'src/utils/theme/theme.dart';
 
 //-- VOİD YERİNE FUTURE DENENEBİLİR --
-Future main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
-  await Firebase.initializeApp();
-
+  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+      .then((value) => Get.put(AuthenticationRepository()));
   runApp(const App());
 }
 
@@ -24,10 +23,16 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
+      //debugShowCheckedModeBanner:,
       defaultTransition: Transition.leftToRightWithFade,
-      transitionDuration: Duration(milliseconds: 500),
+      transitionDuration: const Duration(milliseconds: 500),
       themeMode: ThemeMode.system,
-      home: SplashScreen(),
+      home: const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      ),
     );
   }
 }
+//+1 555-765-4321 +1 555-765-4321
