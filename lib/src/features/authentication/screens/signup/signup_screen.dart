@@ -5,16 +5,19 @@ import 'package:get/get.dart';
 import 'package:kolaypara/src/constants/colors.dart';
 import 'package:kolaypara/src/constants/sizes.dart';
 import 'package:kolaypara/src/features/authentication/controllers/signup_controller.dart';
+import 'package:kolaypara/src/features/authentication/models/user_model.dart';
+import 'package:kolaypara/src/features/authentication/screens/forget_password/forget_password_otp/otp_screen.dart';
 import 'package:kolaypara/src/features/authentication/screens/login/login_screen.dart';
 import '../../../../constants/image_strings.dart';
 import '../../../../constants/text_strings.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
-  static final _formKey = GlobalKey<FormState>();
+  static final GlobalKey<FormState> _formKey1 = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    var isObsecure = true.obs;
     final controller = Get.put(SignUpController());
     final size = MediaQuery.of(context).size;
     return SafeArea(
@@ -36,7 +39,7 @@ class SignUpScreen extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: tFormHeight - 10),
                   child: Form(
-                    key: _formKey,
+                    key: _formKey1,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -99,20 +102,25 @@ class SignUpScreen extends StatelessWidget {
                         SizedBox(
                           height: tFormHeight - 20,
                         ),
-                        TextFormField(
-                          controller: controller.password,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            label: Text(tPassword),
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(
-                              Icons.fingerprint,
-                              color: tSecondaryColor,
-                            ),
-                            labelStyle: TextStyle(color: tSecondaryColor),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 2, color: tSecondaryColor),
+                        Obx(
+                          () => TextFormField(
+                            controller: controller.password,
+                            obscureText: isObsecure.value,
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.fingerprint),
+                              labelText: tPassword,
+                              hintText: tPassword,
+                              border: OutlineInputBorder(),
+                              suffixIcon: Obx(
+                                () => GestureDetector(
+                                  onTap: () {
+                                    isObsecure.value = !isObsecure.value;
+                                  },
+                                  child: Icon(isObsecure.value
+                                      ? Icons.visibility_off
+                                      : Icons.visibility),
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -121,11 +129,16 @@ class SignUpScreen extends StatelessWidget {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: () {
-                              if (_formKey.currentState!.validate()) {
+                              if (_formKey1.currentState!.validate()) {
+                                //Email ve şifre kayıt
                                 SignUpController.instance.registerUser(
                                     controller.email.text.trim(),
                                     controller.password.text.trim());
-                                //SignUpController.instance.phoneAuthentication(controller.phoneNo.text.trim());
+                                //SignUpController.instance.phoneAuthentication(
+                                //controller.phoneNo.text.trim());
+                                //Get.to(() => OTPScreen());
+                                //final user = UserModel(email: controller.email.text.trim(),password: controller.password.text.trim(),fullName: controller.fullName.text.trim(),phoneNo: controller.phoneNo.text.trim(),);
+                                //SignUpController.instance.createUser(user);
                                 //Get.to(() => OTPScreen());
                               }
                             },

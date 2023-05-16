@@ -24,8 +24,10 @@ class App extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       //debugShowCheckedModeBanner:,
-      defaultTransition: Transition.leftToRightWithFade,
-      transitionDuration: const Duration(milliseconds: 500),
+      defaultTransition:
+          Transition.leftToRightWithFade, //sayfa geçiş animasyonu için
+      transitionDuration:
+          const Duration(milliseconds: 500), //sayfa geçis animasyonu için
       themeMode: ThemeMode.system,
       home: const Scaffold(
         body: Center(
@@ -35,4 +37,3 @@ class App extends StatelessWidget {
     );
   }
 }
-//+1 555-765-4321 +1 555-765-4321

@@ -7,11 +7,14 @@ import 'package:kolaypara/src/constants/sizes.dart';
 import 'package:kolaypara/src/constants/text_strings.dart';
 import 'package:kolaypara/src/features/authentication/screens/forget_password/forget_password_otp/otp_screen.dart';
 
+import '../../../controllers/forget_password_controller.dart';
+
 class ForgetPasswordMailScreen extends StatelessWidget {
   const ForgetPasswordMailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgetPasswordController());
     final size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
@@ -36,6 +39,7 @@ class ForgetPasswordMailScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       TextFormField(
+                        controller: controller.email,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           label: Text(tEmail),
@@ -52,9 +56,10 @@ class ForgetPasswordMailScreen extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12))),
                               onPressed: () {
-                                Get.to(() => OTPScreen());
+                                controller.sendPasswordResetEmail(
+                                    controller.email.text);
                               },
-                              child: Text(tNext))),
+                              child: Text(tSendMail))),
                     ],
                   ),
                 ),

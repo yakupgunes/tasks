@@ -6,16 +6,16 @@ import 'package:kolaypara/src/constants/image_strings.dart';
 import 'package:kolaypara/src/constants/sizes.dart';
 import 'package:kolaypara/src/constants/text_strings.dart';
 import '../../controllers/login_controller.dart';
-import '../../controllers/signup_controller.dart';
 import '../forget_password/forget_password_options/forget_password_model_bottom_sheet.dart';
 import '../signup/signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-  static final _formKey = GlobalKey<FormState>();
+  static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    var isObsecure = true.obs;
     final controller = Get.put(LoginController());
     final size = MediaQuery.of(context).size;
     return SafeArea(
@@ -43,6 +43,7 @@ class LoginScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextFormField(
+                          controller: controller.email,
                           keyboardType: TextInputType.emailAddress,
                           decoration: const InputDecoration(
                             prefixIcon: Icon(Icons.person_outline_outlined),
@@ -52,16 +53,26 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: tFormHeight - 20),
-                        TextFormField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.fingerprint),
-                            labelText: tPassword,
-                            hintText: tPassword,
-                            border: OutlineInputBorder(),
-                            suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.remove_red_eye_sharp)),
+                        Obx(
+                          () => TextFormField(
+                            controller: controller.password,
+                            obscureText: isObsecure.value,
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.fingerprint),
+                              labelText: tPassword,
+                              hintText: tPassword,
+                              border: OutlineInputBorder(),
+                              suffixIcon: Obx(
+                                () => GestureDetector(
+                                  onTap: () {
+                                    isObsecure.value = !isObsecure.value;
+                                  },
+                                  child: Icon(isObsecure.value
+                                      ? Icons.visibility_off
+                                      : Icons.visibility),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                         const SizedBox(height: tFormHeight - 20),
