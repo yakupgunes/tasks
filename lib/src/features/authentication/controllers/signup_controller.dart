@@ -4,8 +4,6 @@ import 'package:kolaypara/src/features/authentication/models/user.dart';
 import 'package:kolaypara/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:kolaypara/src/repository/user_repository/user_repository.dart';
 
-import '../screens/forget_password/forget_password_otp/otp_screen.dart';
-
 class SignUpController extends GetxController {
   static SignUpController get instance => Get.find();
 
@@ -27,8 +25,8 @@ class SignUpController extends GetxController {
 
   Future<void> createUser(UserModel user) async {
     await userRepo.createUser(user);
-    phoneAuthentication(user.phoneNo);
-    Get.to(() => const OTPScreen());
+    //phoneAuthentication(user.phoneNo);
+    //Get.to(() => const OTPScreen());
   }
 
   void phoneAuthentication(String phoneNo) {

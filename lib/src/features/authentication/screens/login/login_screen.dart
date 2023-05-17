@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:kolaypara/src/constants/image_strings.dart';
 import 'package:kolaypara/src/constants/sizes.dart';
 import 'package:kolaypara/src/constants/text_strings.dart';
+import 'package:kolaypara/src/features/core/screens/dashboard.dart';
 import '../../controllers/login_controller.dart';
 import '../forget_password/forget_password_options/forget_password_model_bottom_sheet.dart';
 import '../signup/signup_screen.dart';
@@ -92,6 +93,7 @@ class LoginScreen extends StatelessWidget {
                           width: double.infinity,
                           child: ElevatedButton(
                               onPressed: () {
+                                //Get.to(Dashboard()); // diğer sayfaların işlemlerine kadar sayfalara direkt geçiş yapıldı
                                 if (_formKey.currentState!.validate()) {
                                   LoginController.instance.loginUser(
                                       controller.email.text.trim(),

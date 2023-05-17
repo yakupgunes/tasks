@@ -2,9 +2,10 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:kolaypara/src/features/authentication/screens/dashboard/dashboard.dart';
 import 'package:kolaypara/src/features/authentication/screens/welcome/welcome_screen.dart';
 import 'package:kolaypara/src/repository/authentication_repository/exceptions/signup_email_password_failure.dart';
+
+import '../../features/core/screens/dashboard.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
