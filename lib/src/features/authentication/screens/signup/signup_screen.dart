@@ -5,15 +5,14 @@ import 'package:get/get.dart';
 import 'package:kolaypara/src/constants/colors.dart';
 import 'package:kolaypara/src/constants/sizes.dart';
 import 'package:kolaypara/src/features/authentication/controllers/signup_controller.dart';
-import 'package:kolaypara/src/features/authentication/models/user_model.dart';
-import 'package:kolaypara/src/features/authentication/screens/forget_password/forget_password_otp/otp_screen.dart';
 import 'package:kolaypara/src/features/authentication/screens/login/login_screen.dart';
 import '../../../../constants/image_strings.dart';
 import '../../../../constants/text_strings.dart';
+import '../../models/user.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
-  static final GlobalKey<FormState> _formKey1 = GlobalKey<FormState>();
+  static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,7 @@ class SignUpScreen extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: tFormHeight - 10),
                   child: Form(
-                    key: _formKey1,
+                    key: formKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -129,17 +128,23 @@ class SignUpScreen extends StatelessWidget {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: () {
-                              if (_formKey1.currentState!.validate()) {
+                              if (formKey.currentState!.validate()) {
                                 //Email ve şifre kayıt
                                 SignUpController.instance.registerUser(
                                     controller.email.text.trim(),
                                     controller.password.text.trim());
+                                //Telefon no ile kayıt
                                 //SignUpController.instance.phoneAuthentication(
                                 //controller.phoneNo.text.trim());
                                 //Get.to(() => OTPScreen());
-                                //final user = UserModel(email: controller.email.text.trim(),password: controller.password.text.trim(),fullName: controller.fullName.text.trim(),phoneNo: controller.phoneNo.text.trim(),);
-                                //SignUpController.instance.createUser(user);
-                                //Get.to(() => OTPScreen());
+                                final user = UserModel(
+                                  email: controller.email.text.trim(),
+                                  password: controller.password.text.trim(),
+                                  fullName: controller.fullName.text.trim(),
+                                  phoneNo: controller.phoneNo.text.trim(),
+                                );
+                                SignUpController.instance.createUser(user);
+                                //Get.to(() => const OTPScreen());
                               }
                             },
                             child: Text(tSignup.toUpperCase()),

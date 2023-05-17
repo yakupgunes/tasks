@@ -40,7 +40,7 @@ class AuthenticationRepository extends GetxController {
         this.verificationId.value = verificationId;
       },
       verificationFailed: (e) {
-        if (e.code == 'invalid-phone-number') {
+        if (e.code == 'geçersiz-telefon-numarası') {
           Get.snackbar("Hata", "Verilen telefon numarası geçerli değil.");
         } else {
           Get.snackbar("Hata", "Bir şeyler ters gitti. Tekrar deneyin.");
