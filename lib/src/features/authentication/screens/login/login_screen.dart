@@ -47,7 +47,7 @@ class LoginScreen extends StatelessWidget {
                           controller: controller.email,
                           keyboardType: TextInputType.emailAddress,
                           decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.person_outline_outlined),
+                            prefixIcon: Icon(Icons.email_outlined),
                             labelText: tEmail,
                             hintText: tEmail,
                             border: OutlineInputBorder(),

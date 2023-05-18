@@ -8,7 +8,7 @@ import 'package:kolaypara/src/features/authentication/controllers/signup_control
 import 'package:kolaypara/src/features/authentication/screens/login/login_screen.dart';
 import '../../../../constants/image_strings.dart';
 import '../../../../constants/text_strings.dart';
-import '../../models/user.dart';
+import '../../models/user_model.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -88,7 +88,7 @@ class SignUpScreen extends StatelessWidget {
                             label: Text(tPhoneNumber),
                             border: OutlineInputBorder(),
                             prefixIcon: Icon(
-                              Icons.numbers,
+                              Icons.phone_outlined,
                               color: tSecondaryColor,
                             ),
                             labelStyle: TextStyle(color: tSecondaryColor),

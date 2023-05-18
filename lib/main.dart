@@ -21,6 +21,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       //debugShowCheckedModeBanner:,
@@ -28,11 +29,8 @@ class App extends StatelessWidget {
           Transition.leftToRightWithFade, //sayfa geçiş animasyonu için
       transitionDuration:
           const Duration(milliseconds: 500), //sayfa geçis animasyonu için
-      themeMode: ThemeMode.system,
       home: const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
+        body: Center(child: CircularProgressIndicator()),
       ),
     );
   }
