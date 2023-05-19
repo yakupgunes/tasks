@@ -58,3 +58,20 @@ const String tOtpSubTitle = "Doğrulama";
 const String tOtpTitle = "CO\nDE";
 const String tOtpMessage =
     "Lütfen aşağıdaki alana size gönderilen doğrulama kodunu giriniz.";
+
+//--Profile Screen - Text
+const String tProfile = "Profil";
+const String tEditProfile = "Profili Düzenle";
+const String tLogoutDialogHeading = "Çıkış";
+const String tProfileHeading = "Yakup Güneş";
+const String tProfileSubHeading = "yakup@gmail.com";
+//- Menu
+const String tMenu5 = "Anasayfa";
+const String tMenu1 = "Görev al";
+const String tMenu4 = "Görevlerim";
+const String tMenu2 = "Ödeme talebi";
+const String tMenu3 = "S.S.S";
+//--Update Profile Screen -Text
+const String tDelete = "Sil";
+const String tJoined = "Katıldı";
+const String tJoinedAt = "10 Ocak 2023";

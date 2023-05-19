@@ -5,8 +5,8 @@ import 'package:kolaypara/src/constants/colors.dart';
 import 'package:kolaypara/src/constants/image_strings.dart';
 import 'package:kolaypara/src/constants/sizes.dart';
 import 'package:kolaypara/src/constants/text_strings.dart';
-import '../../../repository/authentication_repository/authentication_repository.dart';
-import 'navbar.dart';
+import '../../../../repository/authentication_repository/authentication_repository.dart';
+import '../navbar/navbar.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});

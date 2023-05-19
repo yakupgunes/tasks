@@ -23,3 +23,6 @@ const String tForgetPasswordImage =
     "assets/images/forget_password/forget-password.png";
 const String tForgetPasswordVerificationImage =
     "assets/images/forget_password/forget-password-verification.png";
+
+//--Profile Images
+const String tProfileImage = "assets/images/profile/profile-pic.png";

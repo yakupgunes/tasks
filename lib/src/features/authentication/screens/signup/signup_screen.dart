@@ -43,6 +43,9 @@ class SignUpScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextFormField(
+                          validator: (value) {
+                            return controller.validateFullName(value!);
+                          },
                           controller: controller.fullName,
                           decoration: InputDecoration(
                             label: Text(tFullName),
@@ -62,6 +65,9 @@ class SignUpScreen extends StatelessWidget {
                           height: tFormHeight - 20,
                         ),
                         TextFormField(
+                          validator: (value) {
+                            return controller.validateEmail(value!);
+                          },
                           controller: controller.email,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
@@ -82,6 +88,9 @@ class SignUpScreen extends StatelessWidget {
                           height: tFormHeight - 20,
                         ),
                         TextFormField(
+                          validator: (value) {
+                            return controller.validatePhoneNo(value!);
+                          },
                           controller: controller.phoneNo,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
@@ -103,6 +112,10 @@ class SignUpScreen extends StatelessWidget {
                         ),
                         Obx(
                           () => TextFormField(
+                            //gerekli yerler doldurulmadığında bile firebase'e boş üyelik ekleniyordu. validator eklenerek önüne geçildi.
+                            validator: (value) {
+                              return controller.validatePassword(value!);
+                            },
                             controller: controller.password,
                             obscureText: isObsecure.value,
                             decoration: InputDecoration(
@@ -131,8 +144,10 @@ class SignUpScreen extends StatelessWidget {
                               if (formKey.currentState!.validate()) {
                                 //Email ve şifre kayıt
                                 SignUpController.instance.registerUser(
-                                    controller.email.text.trim(),
-                                    controller.password.text.trim());
+                                  controller.email.text.trim(),
+                                  controller.password.text.trim(),
+                                );
+
                                 //Telefon no ile kayıt
                                 //SignUpController.instance.phoneAuthentication(
                                 //controller.phoneNo.text.trim());

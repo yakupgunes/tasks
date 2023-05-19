@@ -32,4 +32,32 @@ class SignUpController extends GetxController {
   void phoneAuthentication(String phoneNo) {
     AuthenticationRepository.instance.phoneAuthentication(phoneNo);
   }
+
+  String? validateFullName(String value) {
+    if (value.isEmpty) {
+      return "Ad Soyad bölümü boş bırakılamaz.";
+    }
+    return null;
+  }
+
+  String? validateEmail(String value) {
+    if (value.isEmpty) {
+      return "E-posta bölümü boş bırakılamaz.";
+    }
+    return null;
+  }
+
+  String? validatePhoneNo(String value) {
+    if (value.isEmpty) {
+      return "Telefon numarası boş bırakılamaz.";
+    }
+    return null;
+  }
+
+  String? validatePassword(String value) {
+    if (value.isEmpty) {
+      return "Şifre bölümü boş bırakılamaz.";
+    }
+    return null;
+  }
 }

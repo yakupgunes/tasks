@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:kolaypara/src/repository/authentication_repository/authentication_repository.dart';
 
-import '../../core/screens/dashboard.dart';
+import '../../core/screens/dashboard/dashboard.dart';
 
 class OTPController extends GetxController {
   static OTPController get instance => Get.find();
