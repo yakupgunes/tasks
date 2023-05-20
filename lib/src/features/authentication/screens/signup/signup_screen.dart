@@ -61,9 +61,7 @@ class SignUpScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: tFormHeight - 20,
-                        ),
+                        SizedBox(height: tFormHeight - 20),
                         TextFormField(
                           validator: (value) {
                             return controller.validateEmail(value!);
@@ -84,9 +82,7 @@ class SignUpScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: tFormHeight - 20,
-                        ),
+                        SizedBox(height: tFormHeight - 20),
                         TextFormField(
                           validator: (value) {
                             return controller.validatePhoneNo(value!);
@@ -107,9 +103,7 @@ class SignUpScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: tFormHeight - 20,
-                        ),
+                        SizedBox(height: tFormHeight - 20),
                         Obx(
                           () => TextFormField(
                             //gerekli yerler doldurulmadığında bile firebase'e boş üyelik ekleniyordu. validator eklenerek önüne geçildi.
