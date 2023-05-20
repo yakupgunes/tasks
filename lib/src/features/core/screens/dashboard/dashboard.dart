@@ -43,7 +43,10 @@ class Dashboard extends StatelessWidget {
                     //çIKIŞ İŞLEMİ
                     AuthenticationRepository.instance.logout();
                   },
-                  icon: Icon(Icons.exit_to_app)),
+                  icon: Icon(
+                    Icons.exit_to_app,
+                    color: Colors.red,
+                  )),
             ),
           ],
         ),
