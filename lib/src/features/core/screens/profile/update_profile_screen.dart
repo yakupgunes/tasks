@@ -32,12 +32,24 @@ class UpdateProfileScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.all(tDefaultSize),
+
+            /// -- Future Builder to load cloud data
             child: FutureBuilder(
               future: controller.getUserData(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   if (snapshot.hasData) {
                     UserModel userData = snapshot.data as UserModel;
+
+                    ///Controllers
+                    final id = TextEditingController(text: userData.id);
+                    final email = TextEditingController(text: userData.email);
+                    final password =
+                        TextEditingController(text: userData.password);
+                    final fullName =
+                        TextEditingController(text: userData.fullName);
+                    final phoneNo =
+                        TextEditingController(text: userData.phoneNo);
                     return Column(
                       children: [
                         Stack(
@@ -57,7 +69,8 @@ class UpdateProfileScreen extends StatelessWidget {
                           child: Column(
                             children: [
                               TextFormField(
-                                initialValue: userData.fullName,
+                                controller: fullName,
+                                //initialValue: userData.fullName,
                                 decoration: InputDecoration(
                                   label: Text(tFullName),
                                   border: OutlineInputBorder(
@@ -77,7 +90,8 @@ class UpdateProfileScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: tFormHeight - 20),
                               TextFormField(
-                                initialValue: userData.email,
+                                controller: email,
+                                //initialValue: userData.email,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                   label: const Text(tEmail),
@@ -99,7 +113,8 @@ class UpdateProfileScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: tFormHeight - 20),
                               TextFormField(
-                                initialValue: userData.phoneNo,
+                                controller: phoneNo,
+                                //initialValue: userData.phoneNo,
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   label: const Text(tPhoneNumber),
@@ -121,7 +136,8 @@ class UpdateProfileScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: tFormHeight - 20),
                               TextFormField(
-                                initialValue: userData.password,
+                                controller: password,
+                                //initialValue: userData.password,
                                 decoration: InputDecoration(
                                   label: const Text(tPassword),
                                   border: OutlineInputBorder(
@@ -140,11 +156,22 @@ class UpdateProfileScreen extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(height: tFormHeight),
+
+                              /*///Form Submit Button
                               SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton(
-                                  onPressed: () =>
-                                      Get.to(() => const UpdateProfileScreen()),
+                                  onPressed: () async {
+                                    final userData = UserModel(
+                                      id: id.text,
+                                      email: email.text.trim(),
+                                      password: password.text.trim(),
+                                      fullName: fullName.text.trim(),
+                                      phoneNo: phoneNo.text.trim(),
+                                    );
+
+                                    await controller.updateRecord(userData);
+                                  },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: tPrimaryColor,
                                       side: BorderSide.none,
@@ -152,7 +179,7 @@ class UpdateProfileScreen extends StatelessWidget {
                                   child: const Text(tEditProfile,
                                       style: TextStyle(color: tDarkColor)),
                                 ),
-                              ),
+                              ),*/
                               const SizedBox(height: 150),
                               ProfileMenuWidget(
                                 title: "Çıkış",
@@ -177,7 +204,6 @@ class UpdateProfileScreen extends StatelessWidget {
                   return const Center(child: CircularProgressIndicator());
                 }
               },
-              /////
             ),
           ),
         ),

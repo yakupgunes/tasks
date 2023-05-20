@@ -10,7 +10,8 @@ class UserRepository extends GetxController {
 
   final _db = FirebaseFirestore.instance;
 
-  createUser(UserModel user) async {
+  /// Store user in FireStore
+  Future<void> createUser(UserModel user) async {
     await _db.collection("Users").add(user.tojson()).whenComplete(() {
       Get.snackbar(
         "Başarılı",
@@ -24,10 +25,11 @@ class UserRepository extends GetxController {
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.redAccent.withOpacity(0.1),
           colorText: Colors.red);
-      print(error.toString());
+      print("HATA- $error" /*error.toString()*/);
     });
   }
 
+  /// Fetch all user or user details
   Future<UserModel> getUserDetails(String email) async {
     final snapshot =
         await _db.collection("Users").where("Email", isEqualTo: email).get();
@@ -40,5 +42,9 @@ class UserRepository extends GetxController {
     final userData =
         snapshot.docs.map((e) => UserModel.fromSnapshot(e)).toList();
     return userData;
+  }
+
+  Future<void> updateUserRecord(UserModel user) async {
+    await _db.collection("Users").doc(user.id).update(user.tojson());
   }
 }

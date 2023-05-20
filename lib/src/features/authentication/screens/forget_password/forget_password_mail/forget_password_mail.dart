@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:kolaypara/src/constants/image_strings.dart';
 import 'package:kolaypara/src/constants/sizes.dart';
 import 'package:kolaypara/src/constants/text_strings.dart';
-import 'package:kolaypara/src/features/authentication/screens/forget_password/forget_password_otp/otp_screen.dart';
 
 import '../../../controllers/forget_password_controller.dart';
 

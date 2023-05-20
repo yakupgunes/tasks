@@ -12,7 +12,7 @@ class SignUpEmailAndPasswordFailure {
         return SignUpEmailAndPasswordFailure(
             "Lütfen daha güçlü bir şifre girin.");
       case "invalid-email":
-        return SignUpEmailAndPasswordFailure("E-psota geçerli değil.");
+        return SignUpEmailAndPasswordFailure("E-posta geçerli değil.");
       case "email-already-in-use":
         return SignUpEmailAndPasswordFailure(
             "Bu e-posta için bir hesap zaten var.");

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:kolaypara/src/features/authentication/screens/welcome/welcome_screen.dart';
 import 'package:kolaypara/src/repository/authentication_repository/exceptions/signup_email_password_failure.dart';
 
+import '../../features/authentication/screens/splash_screen/splash_screen.dart';
 import '../../features/core/screens/dashboard/dashboard.dart';
 
 class AuthenticationRepository extends GetxController {
@@ -22,9 +23,10 @@ class AuthenticationRepository extends GetxController {
     ever(firebaseUser, _setInitialScreen);
   }
 
+// Uygulama ilk açılış ekranı--
   _setInitialScreen(User? user) {
     user == null
-        ? Get.offAll(() => const WelcomeScreen())
+        ? Get.offAll(() => const WelcomeScreen() /*SplashScreen()*/)
         : Get.offAll(() => const Dashboard());
   }
 

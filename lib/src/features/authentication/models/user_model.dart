@@ -24,6 +24,7 @@ class UserModel {
     };
   }
 
+  /// Map user fetched from Firebase to UserModel
   factory UserModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data()!;
