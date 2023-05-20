@@ -141,7 +141,6 @@ class SignUpScreen extends StatelessWidget {
                                   controller.email.text.trim(),
                                   controller.password.text.trim(),
                                 );
-
                                 //Telefon no ile kayıt
                                 //SignUpController.instance.phoneAuthentication(
                                 //controller.phoneNo.text.trim());

@@ -30,13 +30,20 @@ class Dashboard extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10), color: tCardBgColor),
               child: IconButton(
-                  /*onPressed: () {
-                    //çIKIŞ İŞLEMİ
-                    AuthenticationRepository.instance.logout();
-                  },*/
                   onPressed: () => Get.to(
                       () => const UpdateProfileScreen()), //ProfileScreen()),
                   icon: const Image(image: AssetImage(tUserProfileImage))),
+            ),
+            Container(
+              margin: EdgeInsets.only(right: 20, top: 7),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10), color: tCardBgColor),
+              child: IconButton(
+                  onPressed: () {
+                    //çIKIŞ İŞLEMİ
+                    AuthenticationRepository.instance.logout();
+                  },
+                  icon: Icon(Icons.exit_to_app)),
             ),
           ],
         ),

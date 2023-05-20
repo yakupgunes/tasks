@@ -69,11 +69,14 @@ class UpdateProfileScreen extends StatelessWidget {
                           child: Column(
                             children: [
                               TextFormField(
+                                enabled: false,
                                 controller: fullName,
                                 //initialValue: userData.fullName,
                                 decoration: InputDecoration(
+                                  focusColor: Colors.red,
                                   label: Text(tFullName),
                                   border: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
                                     borderRadius: BorderRadius.circular(100),
                                   ),
                                   prefixIcon: Icon(
@@ -90,12 +93,14 @@ class UpdateProfileScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: tFormHeight - 20),
                               TextFormField(
+                                enabled: false,
                                 controller: email,
                                 //initialValue: userData.email,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                   label: const Text(tEmail),
                                   border: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
                                     borderRadius: BorderRadius.circular(100),
                                   ),
                                   prefixIcon: const Icon(
@@ -113,12 +118,14 @@ class UpdateProfileScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: tFormHeight - 20),
                               TextFormField(
+                                enabled: false,
                                 controller: phoneNo,
                                 //initialValue: userData.phoneNo,
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   label: const Text(tPhoneNumber),
                                   border: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
                                     borderRadius: BorderRadius.circular(100),
                                   ),
                                   prefixIcon: const Icon(
@@ -136,11 +143,13 @@ class UpdateProfileScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: tFormHeight - 20),
                               TextFormField(
+                                enabled: false,
                                 controller: password,
                                 //initialValue: userData.password,
                                 decoration: InputDecoration(
                                   label: const Text(tPassword),
                                   border: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
                                     borderRadius: BorderRadius.circular(100),
                                   ),
                                   prefixIcon: const Icon(
