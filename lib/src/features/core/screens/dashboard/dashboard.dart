@@ -59,6 +59,6 @@ class Dashboard extends StatelessWidget {
       ),
     );
   }
-}
+}//
 
 //NAVBAR DENENECEK

@@ -1,9 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:kolaypara/firebase_options.dart';
-import 'package:kolaypara/src/features/authentication/screens/splash_screen/splash_screen.dart';
 import 'package:kolaypara/src/repository/authentication_repository/authentication_repository.dart';
 import 'src/utils/theme/theme.dart';
 
@@ -34,4 +32,4 @@ class App extends StatelessWidget {
       ),
     );
   }
-}
+}//
