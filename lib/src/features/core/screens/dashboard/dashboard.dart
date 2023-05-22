@@ -200,6 +200,7 @@ class Dashboard extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
               child: GNav(
+                duration: Duration(),
                 curve: Curves.ease,
                 backgroundColor: Colors.blue,
                 color: Colors.white,
