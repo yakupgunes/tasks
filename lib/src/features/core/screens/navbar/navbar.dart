@@ -11,7 +11,7 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final padding = const EdgeInsets.symmetric(horizontal: 20);
     return Drawer(
-      surfaceTintColor: Colors.black,
+      surfaceTintColor: Colors.blue,
       child: Material(
         color: Colors.blue,
         child: ListView(

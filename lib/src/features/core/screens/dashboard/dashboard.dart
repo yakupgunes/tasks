@@ -196,26 +196,36 @@ class Dashboard extends StatelessWidget {
         bottomNavigationBar: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Container(
-            color: Colors.black,
+            color: Colors.blue,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
               child: GNav(
                 curve: Curves.ease,
-                backgroundColor: Colors.black,
+                backgroundColor: Colors.blue,
                 color: Colors.white,
-                activeColor: Colors.white,
-                tabBackgroundColor: Colors.grey.shade800,
-                gap: 10,
-                padding: EdgeInsets.all(16),
+                activeColor: Colors.pink,
+                tabBackgroundColor: Colors.white,
+                tabBorderRadius: 1,
+                padding: EdgeInsets.all(20),
                 tabs: const [
-                  GButton(icon: Icons.home, text: tMenu5),
-                  GButton(icon: Icons.emoji_events_outlined, text: tMenu1),
                   GButton(
-                      icon: Icons.event_available,
-                      text: tMenu4), //task, done_outline, task alt, check
-                  GButton(icon: Icons.currency_lira, text: tMenu2),
-                  GButton(icon: Icons.support_agent_rounded, text: tMenu6),
-                  GButton(icon: Icons.contact_support, text: tMenu3),
+                    icon: Icons.home,
+                  ),
+                  GButton(
+                    icon: Icons.emoji_events_outlined,
+                  ),
+                  GButton(
+                      icon: Icons
+                          .event_available), //task, done_outline, task alt, check
+                  GButton(
+                    icon: Icons.currency_lira,
+                  ),
+                  GButton(
+                    icon: Icons.support_agent_rounded,
+                  ),
+                  GButton(
+                    icon: Icons.contact_support,
+                  ),
                 ],
               ),
             ),
