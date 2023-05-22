@@ -1,11 +1,8 @@
 // ignore_for_file: empty_catches, non_constant_identifier_names, avoid_print
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:kolaypara/src/features/authentication/screens/welcome/welcome_screen.dart';
 import 'package:kolaypara/src/repository/authentication_repository/exceptions/signup_email_password_failure.dart';
-
-import '../../features/authentication/screens/splash_screen/splash_screen.dart';
 import '../../features/core/screens/dashboard/dashboard.dart';
 
 class AuthenticationRepository extends GetxController {

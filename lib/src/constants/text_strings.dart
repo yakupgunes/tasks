@@ -65,13 +65,27 @@ const String tEditProfile = "Profili Düzenle";
 const String tLogoutDialogHeading = "Çıkış";
 const String tProfileHeading = "Yakup Güneş";
 const String tProfileSubHeading = "yakup@gmail.com";
+
 //- Menu
 const String tMenu5 = "Anasayfa";
-const String tMenu1 = "Görev al";
+const String tMenu1 = "Yeni görevler";
 const String tMenu4 = "Görevlerim";
-const String tMenu2 = "Ödeme talebi";
+const String tMenu2 = "Ödeme";
 const String tMenu3 = "S.S.S";
+const String tMenu6 = "Destek";
+
 //--Update Profile Screen -Text
 const String tDelete = "Sil";
 const String tJoined = "Katıldı";
 const String tJoinedAt = "10 Ocak 2023";
+
+// --Dashboard Screen --Text
+const String tDashboardWelcome1 = "HOŞ GELDİN! YENİ GÖREVLER SENİ BEKLİYOR!";
+const String tDashboardWelcome2 =
+    "Aşağıdaki görevlerden birini seç ve para kazanmaya hemen başla.";
+const String tDashboard1 = "Toplam Bakiyeniz:";
+const String tDashboard2 = "0 PUAN(otomatik değişecek)";
+const String tDashboard3 = "Tamamlanan görevler";
+const String tDashboard4 = "0 ADET(otomatik değişecek)";
+const String tDashboard5 = "Onay bekleyen görevler";
+const String tDashboard6 = "0 ADET(otomatik değişecek)";

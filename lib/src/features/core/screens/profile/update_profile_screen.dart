@@ -7,7 +7,6 @@ import 'package:kolaypara/src/constants/sizes.dart';
 import 'package:kolaypara/src/constants/text_strings.dart';
 import 'package:kolaypara/src/features/authentication/controllers/profile_controller.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
 import '../../../../constants/image_strings.dart';
 import '../../../../repository/authentication_repository/authentication_repository.dart';
 import '../../../authentication/models/user_model.dart';
@@ -22,11 +21,13 @@ class UpdateProfileScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: tPrimaryColor,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
           centerTitle: true,
           leading: IconButton(
               onPressed: () => Get.back(),
-              icon: const Icon(LineAwesomeIcons.angle_left)),
+              icon: const Icon(LineAwesomeIcons.angle_left),
+              color: Colors.black),
           title: Text(tProfile, style: Theme.of(context).textTheme.headline4),
         ),
         body: SingleChildScrollView(

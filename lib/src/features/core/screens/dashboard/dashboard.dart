@@ -2,14 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:kolaypara/src/constants/colors.dart';
 import 'package:kolaypara/src/constants/image_strings.dart';
 import 'package:kolaypara/src/constants/sizes.dart';
 import 'package:kolaypara/src/constants/text_strings.dart';
-import 'package:kolaypara/src/features/core/screens/profile/profile_screen.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../../../../repository/authentication_repository/authentication_repository.dart';
-import '../navbar/navbar.dart';
 import '../profile/update_profile_screen.dart';
 
 class Dashboard extends StatelessWidget {
@@ -17,13 +17,20 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Variables
+    final txtTheme = Theme.of(context).textTheme;
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.menu, color: Colors.black),
+          ),
           title: Text(tAppName, style: Theme.of(context).textTheme.headline4),
           centerTitle: true,
           elevation: 0,
-          backgroundColor: Colors.amber, //Colors.transparent,
+          backgroundColor: Colors.transparent,
           actions: [
             Container(
               margin: EdgeInsets.only(right: 20, top: 7),
@@ -43,22 +50,179 @@ class Dashboard extends StatelessWidget {
                     //çIKIŞ İŞLEMİ
                     AuthenticationRepository.instance.logout();
                   },
-                  icon: Icon(
-                    Icons.exit_to_app,
-                    color: Colors.red,
-                  )),
+                  icon: Icon(Icons.exit_to_app, color: Colors.red)),
             ),
           ],
         ),
         body: SingleChildScrollView(
+          //padding: EdgeInsets.all(tDashboardPadding),
           child: Container(
             padding: EdgeInsets.all(tDashboardPadding),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //Baştaki yazılar
+                Center(
+                  child: Text(
+                    tDashboardWelcome1,
+                    style: GoogleFonts.bebasNeue(
+                        fontSize: 28, color: Colors.black),
+                    // letterSpacing: 1,
+                    // color: Colors.red,
+                    // fontSize: 15,
+                    // fontWeight: FontWeight.w900,
+                  ),
+                ),
+                SizedBox(height: 50),
+
+                /// -- TOPLAM BAKİYE
+                SizedBox(
+                  height: 50,
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 45,
+                        height: 45,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: tDarkColor),
+                        child: Center(
+                          child: Icon(LineAwesomeIcons.turkish_lira_sign,
+                              color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(width: 15),
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                tDashboard1,
+                              ),
+                            ),
+                            //SizedBox(height: 5),
+                            Expanded(
+                                child: Text(tDashboard2,
+                                    style: txtTheme.headline4)),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: tDashboardPadding + 20),
+
+                // -- TAMAMLANAN GÖREVLER
+                SizedBox(
+                  height: 50,
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 45,
+                        height: 45,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: tDarkColor),
+                        child: Center(
+                          child: Icon(LineAwesomeIcons.check_square,
+                              color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(width: 15),
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                tDashboard3,
+                              ),
+                            ),
+                            //SizedBox(height: 5),
+                            Expanded(
+                                child: Text(tDashboard4,
+                                    style: txtTheme.headline4)),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: tDashboardPadding + 20),
+
+                // -- ONAY BEKLEYEN GÖREVLER
+                SizedBox(
+                  height: 50,
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 45,
+                        height: 45,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: tDarkColor),
+                        child: Center(
+                          child: Icon(Icons.autorenew, color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(width: 15),
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                tDashboard5,
+                              ),
+                            ),
+                            //SizedBox(height: 5),
+                            Expanded(
+                                child: Text(tDashboard6,
+                                    style: txtTheme.headline4)),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-        drawer: NavBar(),
+        bottomNavigationBar: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Container(
+            color: Colors.black,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              child: GNav(
+                curve: Curves.ease,
+                backgroundColor: Colors.black,
+                color: Colors.white,
+                activeColor: Colors.white,
+                tabBackgroundColor: Colors.grey.shade800,
+                gap: 10,
+                padding: EdgeInsets.all(16),
+                tabs: const [
+                  GButton(icon: Icons.home, text: tMenu5),
+                  GButton(icon: Icons.emoji_events_outlined, text: tMenu1),
+                  GButton(
+                      icon: Icons.event_available,
+                      text: tMenu4), //task, done_outline, task alt, check
+                  GButton(icon: Icons.currency_lira, text: tMenu2),
+                  GButton(icon: Icons.support_agent_rounded, text: tMenu6),
+                  GButton(icon: Icons.contact_support, text: tMenu3),
+                ],
+              ),
+            ),
+          ),
+        ),
+        //drawer: NavBar(),
       ),
     );
   }
-}//
-
-//NAVBAR DENENECEK
+}

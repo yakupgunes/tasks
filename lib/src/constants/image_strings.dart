@@ -26,3 +26,5 @@ const String tForgetPasswordVerificationImage =
 
 //--Profile Images
 const String tProfileImage = "assets/images/profile/profile-pic.png";
+//--Dashboard Images
+const String tUserProfileImages = "assets/images/dashboard/dash-person.png";
