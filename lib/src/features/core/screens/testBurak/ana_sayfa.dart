@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'alt_navbar.dart';
+import 'anasayfa_icerik.dart';
+import 'ayarlar_icerik.dart';
+import 'gorevler_icerik.dart';
 
 class AnaSayfa extends StatefulWidget {
   const AnaSayfa({super.key});
@@ -27,17 +30,9 @@ class _AnaSayfaState extends State<AnaSayfa> {
       body: IndexedStack(
         index: _currentIndex,
         children: const [
-          // Ana Sayfa İçeriği
-          Center(
-            child: Text('Ana Sayfa İçeriği'),
-          ),
-          // Ayarlar İçeriği
-          Center(
-            child: Text('Ayarlar İçeriği'),
-          ),
-          Center(
-            child: Text('Görevler İçeriği'),
-          ),
+          AnaSayfaIcerik(),
+          AyarlarIcerik(),
+          GorevlerIcerik(),
           // Diğer sayfa içeriklerini ekleyin
         ],
       ),
@@ -54,6 +49,8 @@ class _AnaSayfaState extends State<AnaSayfa> {
     } else if (_currentIndex == 1) {
       return 'Ayarlar';
     } else if (_currentIndex == 2) {
+      return 'Görevler';
+    } else if (_currentIndex == 3) {
       return 'Diğer Sayfa';
     }
     // Diğer durumlar için başlıkları buraya ekleyin
