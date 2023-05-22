@@ -194,13 +194,12 @@ class Dashboard extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
           child: Container(
             color: Colors.blue,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
               child: GNav(
-                duration: Duration(),
+                duration: Duration(milliseconds: 100),
                 curve: Curves.ease,
                 backgroundColor: Colors.blue,
                 color: Colors.white,
