@@ -205,7 +205,6 @@ class Dashboard extends StatelessWidget {
                 color: Colors.white,
                 activeColor: Colors.pink,
                 tabBackgroundColor: Colors.white,
-                tabBorderRadius: 1,
                 padding: EdgeInsets.all(20),
                 tabs: const [
                   GButton(
