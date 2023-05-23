@@ -6,7 +6,7 @@ class AnaSayfaIcerik extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Ana Sayfa İçeriği'),
+      child: Text('HAMZAYA SELAM OLSUN'),
     );
   }
 }

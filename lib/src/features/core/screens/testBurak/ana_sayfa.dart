@@ -33,6 +33,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
           AnaSayfaIcerik(),
           AyarlarIcerik(),
           GorevlerIcerik(),
+
           // Diğer sayfa içeriklerini ekleyin
         ],
       ),
