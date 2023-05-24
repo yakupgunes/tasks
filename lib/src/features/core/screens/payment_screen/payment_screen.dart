@@ -69,7 +69,7 @@ class PaymentScreen extends StatelessWidget {
                     '10000 Puan minimum çekim tutarından az olduğundan çekim talebi gerçekleştiremezsiniz.',
                     style: TextStyle(
                       color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.bold, //
                     ),
                   ),
                 ],
