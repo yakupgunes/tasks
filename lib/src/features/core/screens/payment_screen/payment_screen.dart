@@ -83,6 +83,7 @@ class PaymentScreen extends StatelessWidget {
             ),
             SizedBox(height: 16),
             TextFormField(
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 labelText: 'Tutar',
               ),
