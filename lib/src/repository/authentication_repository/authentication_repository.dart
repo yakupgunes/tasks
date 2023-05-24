@@ -1,9 +1,8 @@
-// ignore_for_file: empty_catches, non_constant_identifier_names, avoid_print
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:kolaypara/src/features/authentication/screens/welcome/welcome_screen.dart';
+import 'package:kolaypara/src/features/core/mainpage/main_page.dart';
 import 'package:kolaypara/src/repository/authentication_repository/exceptions/signup_email_password_failure.dart';
-import '../../features/core/screens/dashboard/dashboard.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -24,7 +23,7 @@ class AuthenticationRepository extends GetxController {
   _setInitialScreen(User? user) {
     user == null
         ? Get.offAll(() => const WelcomeScreen() /*SplashScreen()*/)
-        : Get.offAll(() => const Dashboard());
+        : Get.offAll(() => const MainPage());
   }
 
   Future<void> phoneAuthentication(String phoneNo) async {
@@ -62,7 +61,7 @@ class AuthenticationRepository extends GetxController {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       firebaseUser.value != null
-          ? Get.offAll(() => const Dashboard())
+          ? Get.offAll(() => const MainPage())
           : Get.to(() => const WelcomeScreen());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpEmailAndPasswordFailure.code(e.code);

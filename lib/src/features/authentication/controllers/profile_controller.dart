@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kolaypara/src/features/authentication/models/user_model.dart';
 import 'package:kolaypara/src/repository/authentication_repository/authentication_repository.dart';

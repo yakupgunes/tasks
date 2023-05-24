@@ -68,6 +68,7 @@ class SplashScreen extends StatelessWidget {
               ),
             ),
           ),
+
           //İLK SAYFANIN GÖRSELİ İÇİN KODLAR
           TFadeInAnimation(
             durationInMs: 2400,

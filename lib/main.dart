@@ -28,7 +28,9 @@ class App extends StatelessWidget {
       transitionDuration:
           const Duration(milliseconds: 500), //sayfa geçis animasyonu için
       home: const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }

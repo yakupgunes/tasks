@@ -89,3 +89,7 @@ const String tDashboard3 = "Tamamlanan görevler";
 const String tDashboard4 = "0 ADET(otomatik değişecek)";
 const String tDashboard5 = "Onay bekleyen görevler";
 const String tDashboard6 = "0 ADET(otomatik değişecek)";
+
+//-- Support Validate Text
+const String tvalidateSubject = "Konu bölümü boş bırakılamaz";
+const String tvalidateMessage = "Mesaj bölümü boş bırakılamaz";
