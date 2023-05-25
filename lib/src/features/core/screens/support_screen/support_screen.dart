@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
+import 'package:kolaypara/src/constants/text_strings.dart';
+import 'support_screen_class.dart';
 
 class SupportScreen extends StatefulWidget {
   const SupportScreen({super.key});
@@ -44,7 +45,7 @@ class _SupportScreenState extends State<SupportScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Destek Talebi',
+              tSupportScreen1,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -54,14 +55,14 @@ class _SupportScreenState extends State<SupportScreen> {
             TextFormField(
               controller: subjectController,
               decoration: InputDecoration(
-                labelText: 'Konu',
+                labelText: tSupportScreen2,
               ),
             ),
             SizedBox(height: 16),
             TextFormField(
               controller: messageController,
               decoration: InputDecoration(
-                labelText: 'Mesaj',
+                labelText: tSupportScreen3,
               ),
             ),
             SizedBox(height: 16),
@@ -69,11 +70,11 @@ class _SupportScreenState extends State<SupportScreen> {
               onPressed: () {
                 submitSupportTicket();
               },
-              child: Text('Destek Talebi Gönder'),
+              child: Text(tSupportScreen4),
             ),
             SizedBox(height: 32),
             Text(
-              'Destek Talepleri',
+              tSupportScreen5,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -81,7 +82,7 @@ class _SupportScreenState extends State<SupportScreen> {
             ),
             SizedBox(height: 16),
             supportTickets.isEmpty
-                ? Text('Henüz destek talebi gönderilmedi.')
+                ? Text(tSupportScreen6)
                 : Column(
                     children: supportTickets
                         .map((ticket) => Container(
@@ -108,11 +109,4 @@ class _SupportScreenState extends State<SupportScreen> {
       ),
     );
   }
-}
-
-class SupportTicket {
-  final String subject;
-  final String message;
-
-  SupportTicket({required this.subject, required this.message});
 }

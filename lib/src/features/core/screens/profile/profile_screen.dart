@@ -74,7 +74,8 @@ class UpdateProfileScreen extends StatelessWidget {
                   } else if (snapshot.hasError) {
                     return Center(child: Text(snapshot.error.toString()));
                   } else {
-                    return const Center(child: Text("Bir şeyler yanlış gitti"));
+                    return const Center(
+                        child: Text(tProfileScreenErrorMessage));
                   }
                 } else {
                   return const Center(child: CircularProgressIndicator());

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:kolaypara/src/constants/text_strings.dart';
 import 'package:kolaypara/src/features/core/screens/task_screen/task.dart';
 
 class TaskScreen extends StatelessWidget {
@@ -14,7 +15,7 @@ class TaskScreen extends StatelessWidget {
         child: tasks.isEmpty
             ? Center(
                 child: Text(
-                  'Henüz bir göreve katılmadınız',
+                  tTaskScreen1,
                   style: TextStyle(fontSize: 18),
                 ),
               )
@@ -58,7 +59,7 @@ class TaskScreen extends StatelessWidget {
                         Text(
                           'Durum: ${task.status}',
                           style: TextStyle(
-                            color: task.status == 'Tamamlandı'
+                            color: task.status == tTaskScreen2
                                 ? Colors.green
                                 : Colors.red,
                             fontWeight: FontWeight.bold,

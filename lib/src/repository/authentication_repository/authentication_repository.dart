@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:kolaypara/src/constants/text_strings.dart';
 import 'package:kolaypara/src/features/authentication/screens/welcome/welcome_screen.dart';
 import 'package:kolaypara/src/features/core/mainpage/main_page.dart';
 import 'package:kolaypara/src/repository/authentication_repository/exceptions/signup_email_password_failure.dart';
@@ -40,9 +41,9 @@ class AuthenticationRepository extends GetxController {
       },
       verificationFailed: (e) {
         if (e.code == 'geçersiz-telefon-numarası') {
-          Get.snackbar("Hata", "Verilen telefon numarası geçerli değil.");
+          Get.snackbar(tphoneAuthentication1, tphoneAuthentication2);
         } else {
-          Get.snackbar("Hata", "Bir şeyler ters gitti. Tekrar deneyin.");
+          Get.snackbar(tphoneAuthentication1, tphoneAuthentication3);
         }
       },
     );
@@ -74,6 +75,37 @@ class AuthenticationRepository extends GetxController {
     }
     return null;
   }
+
+  // --CREATEUSERWİTHEMAİLANDPASSWORD KISMI DEĞİŞTİRİLECEK
+  /* Future<String?> createUserWithEmailAndPassword(
+    String email, String password) async {
+  try {
+    final existingUser = await FirebaseFirestore.instance
+        .collection('Users')
+        .where('Email', isEqualTo: email)
+        .get();
+
+    if (existingUser.docs.isEmpty) {
+      await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+
+      firebaseUser.value != null
+          ? Get.offAll(() => const MainPage())
+          : Get.to(() => const WelcomeScreen());
+    } else {
+      return "Bu e-posta zaten kullanılıyor.";
+    }
+  } on FirebaseAuthException catch (e) {
+    final ex = SignUpEmailAndPasswordFailure.code(e.code);
+    print("Firebase yetkilendirme beklentisi - ${ex.message}");
+    return ex.message; // Hata mesajını döndür
+  } catch (_) {
+    const ex = SignUpEmailAndPasswordFailure();
+    print("Beklenti - ${ex.message}");
+    return ex.message; // Hata mesajını döndür
+  }
+  return null;
+}*/
 
   Future<String?> loginWithEmailAndPassword(
       String email, String password) async {

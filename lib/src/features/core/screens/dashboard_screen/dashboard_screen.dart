@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kolaypara/src/constants/text_strings.dart';
 
 import 'section_widget.dart';
 
@@ -14,20 +15,20 @@ class DashboardScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SectionWidget(
-              title: 'Toplam Bakiye ve Puan',
-              value: '250 TL - 0 Puan',
+              title: tSectionWidgetTitle1,
+              value: tSectionWidgetValue1,
               color: Colors.black,
             ),
             SizedBox(height: 20),
             SectionWidget(
-              title: 'Tamamlanan Görevler',
-              value: '5 Görev Tamamlandı',
+              title: tSectionWidgetTitle2,
+              value: tSectionWidgetValue2,
               color: Colors.black,
             ),
             SizedBox(height: 20),
             SectionWidget(
-              title: 'Onay Bekleyen Görevler',
-              value: '2 Görev Bekliyor',
+              title: tSectionWidgetTitle3,
+              value: tSectionWidgetValue3,
               color: Colors.black,
             ),
           ],

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:kolaypara/src/constants/text_strings.dart';
 
 class FaqScreen extends StatelessWidget {
   const FaqScreen({super.key});
@@ -14,7 +15,7 @@ class FaqScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
             Text(
-              'Ne gibi görevler yapabilirim?',
+              tFaqScreenTitle,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -22,7 +23,7 @@ class FaqScreen extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Text(
-              'Google Play, AppStore, Google Maps, Youtube, Instagram, Facebook, Web Sitesi gibi platformlarda ziyaret, izleme, yorum yazma gibi basit görevleri yapabilirsiniz.',
+              tFaqScreenValue,
             ),
           ],
         ),

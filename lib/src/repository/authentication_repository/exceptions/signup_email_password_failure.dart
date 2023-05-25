@@ -1,29 +1,30 @@
-// ignore_for_file: prefer_const_constructors
+import 'package:kolaypara/src/constants/text_strings.dart';
 
 class SignUpEmailAndPasswordFailure {
   final String message;
 
   const SignUpEmailAndPasswordFailure(
-      [this.message = "Bilinmeyen bir hata oluştu."]);
+      [this.message = tSignUpEmailAndPasswordFailureErrorMessage]);
 
   factory SignUpEmailAndPasswordFailure.code(String code) {
     switch (code) {
       case "weak-password":
-        return SignUpEmailAndPasswordFailure(
-            "Lütfen daha güçlü bir şifre girin.");
+        return const SignUpEmailAndPasswordFailure(
+            tSignUpEmailAndPasswordFailure1);
       case "invalid-email":
-        return SignUpEmailAndPasswordFailure("E-posta geçerli değil.");
+        return const SignUpEmailAndPasswordFailure(
+            tSignUpEmailAndPasswordFailure2);
       case "email-already-in-use":
-        return SignUpEmailAndPasswordFailure(
-            "Bu e-posta için bir hesap zaten var.");
+        return const SignUpEmailAndPasswordFailure(
+            tSignUpEmailAndPasswordFailure3);
       case "operation-not-allowed":
-        return SignUpEmailAndPasswordFailure(
-            "İşleme izin verilmiyor. Lütfen destek ile iletişime geçiniz.");
+        return const SignUpEmailAndPasswordFailure(
+            tSignUpEmailAndPasswordFailure4);
       case "user-disabled":
-        return SignUpEmailAndPasswordFailure(
-            "Bu kullanıcı engellendi. Yardım için lütfen destek ile iletişime geçiniz.");
+        return const SignUpEmailAndPasswordFailure(
+            tSignUpEmailAndPasswordFailure5);
       default:
-        return SignUpEmailAndPasswordFailure();
+        return const SignUpEmailAndPasswordFailure();
     }
   }
 }

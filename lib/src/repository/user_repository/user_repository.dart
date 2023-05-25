@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kolaypara/src/constants/text_strings.dart';
 import 'package:kolaypara/src/features/authentication/models/user_model.dart';
 
 class UserRepository extends GetxController {
@@ -14,14 +15,14 @@ class UserRepository extends GetxController {
   Future<void> createUser(UserModel user) async {
     await _db.collection("Users").add(user.tojson()).whenComplete(() {
       Get.snackbar(
-        "Başarılı",
-        "Hesabınız oluşturuldu.",
+        tcreateUser1,
+        tcreateUser2,
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.green.withOpacity(0.1),
         colorText: Colors.green,
       );
     }).catchError((error, stackTrace) {
-      Get.snackbar("Hata", "Bir şeyler yanlış gitti.Tekrar deneyin.",
+      Get.snackbar(tcreateUser3, tcreateUser4,
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.redAccent.withOpacity(0.1),
           colorText: Colors.red);
@@ -29,6 +30,39 @@ class UserRepository extends GetxController {
     });
   }
 
+  /*/// --CREATEUSER DEĞİŞTİRLECEK
+  Future<void> createUser(UserModel user) async {
+  final existingUserSnapshot = await _db
+      .collection("Users")
+      .where("Email", isEqualTo: user.email)
+      .get();
+
+  if (existingUserSnapshot.docs.isEmpty) {
+    await _db.collection("Users").add(user.tojson()).whenComplete(() {
+      Get.snackbar(
+        tcreateUser1,
+        tcreateUser2,
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green.withOpacity(0.1),
+        colorText: Colors.green,
+      );
+    }).catchError((error, stackTrace) {
+      Get.snackbar(tcreateUser3, tcreateUser4,
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.redAccent.withOpacity(0.1),
+          colorText: Colors.red);
+      print("HATA- $error");
+    });
+  } else {
+    // E-posta zaten kullanılıyor
+    Get.snackbar("Hata", "Bu e-posta zaten kullanılıyor.",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        colorText: Colors.red);
+  }
+}
+
+*/
   /// Fetch all user or user details
   Future<UserModel> getUserDetails(String email) async {
     final snapshot =

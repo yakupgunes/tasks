@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:kolaypara/src/constants/text_strings.dart';
 
 class PaymentScreen extends StatelessWidget {
   PaymentScreen({super.key});
@@ -36,7 +37,7 @@ class PaymentScreen extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Text(
-              'Ödeme Talebi',
+              tPaymentScreen1,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -66,7 +67,7 @@ class PaymentScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 16),
                   Text(
-                    '10000 Puan minimum çekim tutarından az olduğundan çekim talebi gerçekleştiremezsiniz.',
+                    tPaymentScreen2,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold, //
@@ -78,26 +79,26 @@ class PaymentScreen extends StatelessWidget {
             SizedBox(height: 16),
             TextFormField(
               decoration: InputDecoration(
-                labelText: 'IBAN veya Cüzdan No',
+                labelText: tPaymentScreen3,
               ),
             ),
             SizedBox(height: 16),
             TextFormField(
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                labelText: 'Tutar',
+                labelText: tPaymentScreen4,
               ),
             ),
             SizedBox(height: 16),
             TextFormField(
               decoration: InputDecoration(
-                labelText: 'Ödeme Yapılacak İsim',
+                labelText: tPaymentScreen5,
               ),
             ),
             SizedBox(height: 16),
             DropdownButtonFormField<String>(
               decoration: InputDecoration(
-                labelText: 'Banka/Ödeme Yöntemi',
+                labelText: tPaymentScreen6,
               ),
               isExpanded: true,
               value: bankNames[0],
@@ -116,31 +117,21 @@ class PaymentScreen extends StatelessWidget {
               onPressed: () {
                 // Çekim talebi yap butonuna basıldığında yapılacak işlemler
               },
-              child: Text('Çekim Talebi Yap'),
+              child: Text(tPaymentScreen7),
             ),
             SizedBox(height: 32),
             Text(
-              'Son Çekimler',
+              tPaymentScreen8,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(height: 16),
-            Text('Henüz çekim yapmadınız.'),
+            Text(tPaymentScreen9),
           ],
         ),
       ),
     );
   }
-}
-
-class Payment {
-  final double amount;
-  final String status;
-
-  Payment({
-    required this.amount,
-    required this.status,
-  });
 }
