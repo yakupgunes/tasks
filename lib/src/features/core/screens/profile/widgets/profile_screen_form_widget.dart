@@ -1,142 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:kolaypara/src/features/authentication/models/user_model.dart';
 import '../../../../../constants/colors.dart';
-import '../../../../../constants/sizes.dart';
 import '../../../../../constants/text_strings.dart';
 
 class ProfileScreenFormWidget extends StatelessWidget {
-  const ProfileScreenFormWidget({
-    super.key,
-    required this.fullName,
-    required this.email,
-    required this.phoneNo,
-    required this.password,
-  });
+  const ProfileScreenFormWidget({Key? key, required this.userData})
+      : super(key: key);
 
-  final TextEditingController fullName;
-  final TextEditingController email;
-  final TextEditingController phoneNo;
-  final TextEditingController password;
+  final UserModel userData;
 
   @override
   Widget build(BuildContext context) {
-    return Form(
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          TextFormField(
-            enabled: false,
-            controller: fullName,
-            //initialValue: userData.fullName,
-            decoration: InputDecoration(
-              focusColor: Colors.red,
-              label: const Text(tFullName),
-              border: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(100),
-              ),
-              prefixIcon: const Icon(
-                Icons.person_outline_rounded,
-                color: tSecondaryColor,
-              ),
-              labelStyle: const TextStyle(color: tSecondaryColor),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(100),
-                borderSide: const BorderSide(width: 2, color: tSecondaryColor),
-              ),
-            ),
-          ),
-          const SizedBox(height: tFormHeight - 20),
-          TextFormField(
-            enabled: false,
-            controller: email,
-            //initialValue: userData.email,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              label: const Text(tEmail),
-              border: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(100),
-              ),
-              prefixIcon: const Icon(
-                Icons.email_outlined,
-                color: tSecondaryColor,
-              ),
-              labelStyle: const TextStyle(color: tSecondaryColor),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(100),
-                borderSide: const BorderSide(width: 2, color: tSecondaryColor),
-              ),
-            ),
-          ),
-          const SizedBox(height: tFormHeight - 20),
-          TextFormField(
-            enabled: false,
-            controller: phoneNo,
-            //initialValue: userData.phoneNo,
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              label: const Text(tPhoneNumber),
-              border: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(100),
-              ),
-              prefixIcon: const Icon(
-                Icons.phone_outlined,
-                color: tSecondaryColor,
-              ),
-              labelStyle: const TextStyle(color: tSecondaryColor),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(100),
-                borderSide: const BorderSide(width: 2, color: tSecondaryColor),
-              ),
-            ),
-          ),
-          const SizedBox(height: tFormHeight - 20),
-          TextFormField(
-            enabled: false,
-            controller: password,
-            //initialValue: userData.password,
-            decoration: InputDecoration(
-              label: const Text(tPassword),
-              border: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(100),
-              ),
-              prefixIcon: const Icon(
-                Icons.fingerprint,
-                color: tSecondaryColor,
-              ),
-              labelStyle: const TextStyle(color: tSecondaryColor),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(100),
-                borderSide: const BorderSide(width: 2, color: tSecondaryColor),
-              ),
-            ),
-          ),
-          const SizedBox(height: tFormHeight),
+          buildProfileInfoRow(tFullName, userData.fullName),
+          buildProfileInfoRow(tEmail, userData.email),
+          buildProfileInfoRow(tPhoneNumber, userData.phoneNo),
+          buildProfileInfoRow(tPassword, userData.password),
+        ],
+      ),
+    );
+  }
 
-          /*///Form Submit Button
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () async {
-                final userData = UserModel(
-                  id: id.text,
-                  email: email.text.trim(),
-                  password: password.text.trim(),
-                  fullName: fullName.text.trim(),
-                  phoneNo: phoneNo.text.trim(),
-                );
-
-                await controller.updateRecord(userData);
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: tPrimaryColor,
-                  side: BorderSide.none,
-                  shape: const StadiumBorder()),
-              child: const Text(tEditProfile,
-                  style: TextStyle(color: tDarkColor)),
+  Widget buildProfileInfoRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        children: [
+          const Icon(
+            Icons.circle_rounded,
+            size: 10,
+            color: tSecondaryColor,
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              label,
+              style: const TextStyle(
+                color: Colors.black87,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),*/
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              value,
+              style: const TextStyle(
+                color: Colors.black87,
+                fontSize: 16,
+              ),
+            ),
+          ),
         ],
       ),
     );
