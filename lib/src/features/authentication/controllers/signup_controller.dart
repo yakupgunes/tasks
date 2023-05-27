@@ -16,13 +16,13 @@ class SignUpController extends GetxController {
 
   final userRepo = Get.put(UserRepository());
 
-  Future<void> registerUser(String email, String password) async {
+  /*Future<void> registerUser(String email, String password) async {
     String? error = await AuthenticationRepository.instance
         .createUserWithEmailAndPassword(email, password);
     if (error != null) {
       Get.showSnackbar(GetSnackBar(message: error.toString()));
     }
-  }
+  }*/
 
   //-- İLK REGİSTERUSER DEĞİŞTİRME DENEMESİ
 
@@ -44,30 +44,30 @@ class SignUpController extends GetxController {
 */
 
   /// ----------REGİSTERUSER DEĞİŞTİRİLECEK----------
-/*
 
-final fullNameController = TextEditingController();
-final phoneNoController = TextEditingController();
+  final fullNameController = TextEditingController();
+  final phoneNoController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
 // ...
 
-Future<void> registerUser(String email, String password) async {
-  String? error = await AuthenticationRepository.instance
-      .createUserWithEmailAndPassword(email, password);
-  if (error != null) {
-    Get.showSnackbar(GetSnackBar(message: error.toString()));
-  } else {
-    final user = UserModel(
-      email: email.trim(),
-      password: password.trim(),
-      fullName: fullNameController.text.trim(),
-      phoneNo: phoneNoController.text.trim(),
-    );
-    SignUpController.instance.createUser(user);
+  Future<void> registerUser(String email, String password) async {
+    String? error = await AuthenticationRepository.instance
+        .createUserWithEmailAndPassword(email, password);
+    if (error != null) {
+      Get.showSnackbar(GetSnackBar(message: error.toString()));
+    } else {
+      final user = UserModel(
+        email: email.trim(),
+        password: password.trim(),
+        fullName: fullNameController.text.trim(),
+        phoneNo: phoneNoController.text.trim(),
+      );
+      SignUpController.instance.createUser(user);
+    }
   }
-}
 
-*/
   Future<void> createUser(UserModel user) async {
     await userRepo.createUser(user);
     //phoneAuthentication(user.phoneNo);

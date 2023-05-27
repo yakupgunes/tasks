@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:kolaypara/src/constants/text_strings.dart';
@@ -56,7 +57,7 @@ class AuthenticationRepository extends GetxController {
     return credentials.user != null ? true : false;
   }
 
-  Future<String?> createUserWithEmailAndPassword(
+  /*Future<String?> createUserWithEmailAndPassword(
       String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(
@@ -74,45 +75,61 @@ class AuthenticationRepository extends GetxController {
       throw ex;
     }
     return null;
-  }
+  }*/
 
   // --CREATEUSERWİTHEMAİLANDPASSWORD KISMI DEĞİŞTİRİLECEK
-  /* Future<String?> createUserWithEmailAndPassword(
-    String email, String password) async {
-  try {
-    final existingUser = await FirebaseFirestore.instance
-        .collection('Users')
-        .where('Email', isEqualTo: email)
-        .get();
+  Future<String?> createUserWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      final existingUser = await FirebaseFirestore.instance
+          .collection('Users')
+          .where('Email', isEqualTo: email)
+          .get();
 
-    if (existingUser.docs.isEmpty) {
-      await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      if (existingUser.docs.isEmpty) {
+        await _auth.createUserWithEmailAndPassword(
+            email: email, password: password);
 
-      firebaseUser.value != null
-          ? Get.offAll(() => const MainPage())
-          : Get.to(() => const WelcomeScreen());
-    } else {
-      return "Bu e-posta zaten kullanılıyor.";
+        firebaseUser.value != null
+            ? Get.offAll(() => const MainPage())
+            : Get.to(() => const WelcomeScreen());
+      } else {
+        return "Bu e-posta zaten kullanılıyor.";
+      }
+    } on FirebaseAuthException catch (e) {
+      final ex = SignUpEmailAndPasswordFailure.code(e.code);
+      print("Firebase yetkilendirme beklentisi - ${ex.message}");
+      return ex.message; // Hata mesajını döndür
+    } catch (_) {
+      const ex = SignUpEmailAndPasswordFailure();
+      print("Beklenti - ${ex.message}");
+      return ex.message; // Hata mesajını döndür
     }
-  } on FirebaseAuthException catch (e) {
-    final ex = SignUpEmailAndPasswordFailure.code(e.code);
-    print("Firebase yetkilendirme beklentisi - ${ex.message}");
-    return ex.message; // Hata mesajını döndür
-  } catch (_) {
-    const ex = SignUpEmailAndPasswordFailure();
-    print("Beklenti - ${ex.message}");
-    return ex.message; // Hata mesajını döndür
+    return null;
   }
-  return null;
-}*/
+
+  // Future<String?> loginWithEmailAndPassword(
+  //     String email, String password) async {
+  //   try {
+  //     await _auth.signInWithEmailAndPassword(email: email, password: password);
+  //   } on FirebaseAuthException catch (e) {
+  //   } catch (_) {}
+  //   return null;
+  // }
 
   Future<String?> loginWithEmailAndPassword(
       String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
-    } catch (_) {}
+      final errorMessage = e.message;
+      print("Firebase yetkilendirme hatası - $errorMessage");
+      return errorMessage; // Hata mesajını döndür
+    } catch (error) {
+      final errorMessage = "Giriş sırasında bir hata oluştu.";
+      print("Beklenmeyen bir hata - $error");
+      return errorMessage; // Hata mesajını döndür
+    }
     return null;
   }
 

@@ -22,6 +22,8 @@ const String tForgetPassword = "Şifremi unuttum";
 const String tSingInWithGoogle = "Google ile giriş yap";
 const String tDontHaveAnAccount = "Üye değil misiniz? ";
 const String tSignup2 = "Şimdi üye olun";
+const String tloginErrorMessage =
+    "Lütfen girdiğiniz bilgilerin doğruluğunu kontrol edin.";
 
 //-- Sign Up Screen Text
 const String tSignUpTitle = "Hoşgeldiniz,";
