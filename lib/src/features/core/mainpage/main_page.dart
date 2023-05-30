@@ -1,8 +1,9 @@
 // ignore_for_file: deprecated_member_use, prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kolaypara/src/features/core/deneme_tasks_screen/deneme_tasks_screen.dart';
 import 'package:kolaypara/src/features/core/screens/dashboard_screen/dashboard_screen.dart';
-import 'package:kolaypara/src/features/core/screens/new_task_screen/new_task_screen.dart';
+import 'package:kolaypara/src/features/core/screens/new_tasks_screen/new_tasks_screen.dart';
 import 'package:kolaypara/src/features/core/screens/task_screen/task_screen.dart';
 import 'package:kolaypara/src/features/core/screens/faq_screen/faq_screen.dart';
 import 'package:kolaypara/src/features/core/screens/payment_screen/payment_screen.dart';
@@ -73,7 +74,7 @@ class _MainPageState extends State<MainPage> {
           index: _currentIndex,
           children: [
             DashboardScreen(),
-            NewTaskScreen(),
+            TaskListScreen(), //NewTasksScreen(),
             TaskScreen(),
             PaymentScreen(),
             SupportScreen(),

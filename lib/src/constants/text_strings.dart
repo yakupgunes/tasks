@@ -94,6 +94,7 @@ const String tMenu4 = "Görevlerim";
 const String tMenu2 = "Ödeme";
 const String tMenu3 = "S.S.S";
 const String tMenu6 = "Destek";
+const String tMenu7 = "Görev Detayı";
 
 //--Update Profile Screen Text
 const String tDelete = "Sil";
@@ -164,3 +165,6 @@ const String tSupportScreen6 = 'Henüz destek talebi gönderilmedi.';
 //-- Task Screen Text
 const String tTaskScreen1 = 'Henüz bir göreve katılmadınız';
 const String tTaskScreen2 = 'Tamamlandı';
+
+//-- Task Details
+const String tTaskDetails = "Resim seç";
