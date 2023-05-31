@@ -161,6 +161,9 @@ const String tSupportScreen3 = 'Mesaj';
 const String tSupportScreen4 = 'Destek Talebi Gönder';
 const String tSupportScreen5 = 'Destek Talepleri';
 const String tSupportScreen6 = 'Henüz destek talebi gönderilmedi.';
+const String tSupportScreen7 = 'Talep başarısız';
+const String tSupportScreen8 = 'Lütfen taleplerinizi eksiksiz doldurun.';
+const String tSupportScreen9 = 'Tamam';
 
 //-- Task Screen Text
 const String tTaskScreen1 = 'Henüz bir göreve katılmadınız';

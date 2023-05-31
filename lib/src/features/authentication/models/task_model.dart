@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TaskModel {
+  final String id;
   final String name;
   final int capacity;
   final String content;
@@ -8,7 +9,8 @@ class TaskModel {
   final String image;
 
   TaskModel(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.capacity,
       required this.content,
       required this.points,
@@ -39,6 +41,7 @@ class TaskModel {
   factory TaskModel.fromSnapshot(DocumentSnapshot snapshot) {
     final data = snapshot.data() as Map<String, dynamic>;
     return TaskModel(
+      id: snapshot.id,
       name: data['name'] ?? '',
       capacity: data['capacity'] ?? 0,
       content: data['content'] ?? '',

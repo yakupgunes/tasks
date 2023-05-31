@@ -1,13 +1,14 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:kolaypara/src/constants/text_strings.dart';
 import 'support_screen_class.dart';
 
 class SupportScreen extends StatefulWidget {
-  const SupportScreen({super.key});
+  const SupportScreen({Key? key}) : super(key: key);
 
   @override
-  State<SupportScreen> createState() => _SupportScreenState();
+  _SupportScreenState createState() => _SupportScreenState();
 }
 
 class _SupportScreenState extends State<SupportScreen> {
@@ -27,6 +28,25 @@ class _SupportScreenState extends State<SupportScreen> {
     String subject = subjectController.text;
     String message = messageController.text;
 
+    if (subject.isEmpty || message.isEmpty) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text(tSupportScreen7),
+          content: const Text(tSupportScreen8),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text(tSupportScreen9),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+
     SupportTicket ticket = SupportTicket(subject: subject, message: message);
     supportTickets.add(ticket);
 
@@ -40,68 +60,70 @@ class _SupportScreenState extends State<SupportScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
+            const Text(
               tSupportScreen1,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextFormField(
               controller: subjectController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: tSupportScreen2,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextFormField(
               controller: messageController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: tSupportScreen3,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 submitSupportTicket();
               },
-              child: Text(tSupportScreen4),
+              child: const Text(tSupportScreen4),
             ),
-            SizedBox(height: 32),
-            Text(
+            const SizedBox(height: 32),
+            const Text(
               tSupportScreen5,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             supportTickets.isEmpty
-                ? Text(tSupportScreen6)
+                ? const Text(tSupportScreen6)
                 : Column(
                     children: supportTickets
-                        .map((ticket) => Container(
-                              padding: EdgeInsets.symmetric(vertical: 8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Konu: ${ticket.subject}',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                        .map(
+                          (ticket) => Container(
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Konu: ${ticket.subject}',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  SizedBox(height: 8),
-                                  Text('Mesaj: ${ticket.message}'),
-                                  Divider(),
-                                ],
-                              ),
-                            ))
+                                ),
+                                const SizedBox(height: 8),
+                                Text('Mesaj: ${ticket.message}'),
+                                const Divider(),
+                              ],
+                            ),
+                          ),
+                        )
                         .toList(),
                   ),
           ],

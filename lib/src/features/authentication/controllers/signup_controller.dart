@@ -8,7 +8,7 @@ import 'package:kolaypara/src/repository/user_repository/user_repository.dart';
 class SignUpController extends GetxController {
   static SignUpController get instance => Get.find();
 
-  //TextFiedl Controller to get data from TextFields
+  //TextField Controller to get data from TextFields
   final email = TextEditingController();
   final password = TextEditingController();
   final fullName = TextEditingController();
