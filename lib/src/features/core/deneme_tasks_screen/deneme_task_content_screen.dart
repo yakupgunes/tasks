@@ -2,16 +2,17 @@
 
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:kolaypara/src/constants/text_strings.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class TaskContentScreen extends StatefulWidget {
   final String content;
 
-  const TaskContentScreen({super.key, required this.content});
+  const TaskContentScreen({Key? key, required this.content}) : super(key: key);
 
   @override
   _TaskContentScreenState createState() => _TaskContentScreenState();
@@ -20,6 +21,7 @@ class TaskContentScreen extends StatefulWidget {
 class _TaskContentScreenState extends State<TaskContentScreen> {
   File? _selectedImage;
   String? _selectedImageName;
+  final _auth = FirebaseAuth.instance;
 
   Future<void> _pickImage(ImageSource source) async {
     final picker = ImagePicker();
@@ -52,6 +54,74 @@ class _TaskContentScreenState extends State<TaskContentScreen> {
     );
   }
 
+  void _completeTask() {
+    final userUid = _auth.currentUser!.uid;
+    final userRef = FirebaseFirestore.instance.collection('Users').doc(userUid);
+    // Kullanıcının UID'sini alın
+
+    final taskCollection =
+        FirebaseFirestore.instance.collection('Users/$userUid/Tasks');
+    taskCollection.add({
+      'görevAdı': widget.content,
+      'görevTamamlandı': true,
+    }).then((value) {
+      print('Görev tamamlandı');
+
+      // Görev tamamlandığında kullanıcının görevlerinden kaldırılması
+      final userTasksCollection =
+          FirebaseFirestore.instance.collection('Users/$userUid/Tasks');
+      userTasksCollection
+          .where('görevAdı', isEqualTo: widget.content)
+          .get()
+          .then((snapshot) {
+        if (snapshot.docs.isNotEmpty) {
+          final taskDoc = snapshot.docs.first;
+          taskDoc.reference.delete().then((_) {
+            print('Görev kullanıcının görevlerinden kaldırıldı');
+
+            // Görev tamamlandığında kullanıcının bilgilerinin tutulduğu alana görevi ekleme
+            userRef.get().then((doc) {
+              if (doc.exists) {
+                userRef.update({
+                  'completedTasks': FieldValue.arrayUnion([widget.content]),
+                }).then((_) {
+                  print('Görev kullanıcının bilgilerine eklendi');
+                  Get.back(result: widget.content);
+                }).catchError((error) {
+                  print(
+                      'Görev kullanıcının bilgilerine eklenirken hata oluştu: $error');
+                  // Hata durumunu işleyebilirsiniz
+                });
+              } else {
+                userRef.set({
+                  'completedTasks': [widget.content],
+                }).then((_) {
+                  print('Kullanıcının belgesi oluşturuldu ve görev eklendi');
+                  Get.back(result: widget.content);
+                }).catchError((error) {
+                  print(
+                      'Kullanıcının belgesi oluşturulurken hata oluştu: $error');
+                  // Hata durumunu işleyebilirsiniz
+                });
+              }
+            }).catchError((error) {
+              print(
+                  'Kullanıcının belgesini kontrol ederken hata oluştu: $error');
+              // Hata durumunu işleyebilirsiniz
+            });
+          }).catchError((error) {
+            print(
+                'Görev kullanıcının görevlerinden kaldırılırken hata oluştu: $error');
+            // Hata durumunu işleyebilirsiniz
+          });
+        }
+      });
+    }).catchError((error) {
+      print('Görev tamamlanırken hata oluştu: $error');
+      // Hata durumunu işleyebilirsiniz
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,9 +134,9 @@ class _TaskContentScreenState extends State<TaskContentScreen> {
           icon: const Icon(LineAwesomeIcons.angle_left),
           color: Colors.black,
         ),
-        title: Text(
-          tMenu7,
-          style: Theme.of(context).textTheme.headlineMedium,
+        title: const Text(
+          'Görev Detayı',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ),
       body: Column(
@@ -155,12 +225,8 @@ class _TaskContentScreenState extends State<TaskContentScreen> {
                 ),
                 minimumSize: const Size(400, 50),
               ),
-              onPressed: isImageSelected
-                  ? () {
-                      // Görevi yap butonuna basıldığında yapılacak işlemler
-                    }
-                  : _showAlertDialog,
-              child: Text("Görevi Yap".toUpperCase()),
+              onPressed: isImageSelected ? _completeTask : _showAlertDialog,
+              child: Text('Görevi Yap'.toUpperCase()),
             ),
           ),
           const SizedBox(height: 16),
