@@ -63,6 +63,7 @@ class SignUpController extends GetxController {
         password: password.trim(),
         fullName: fullNameController.text.trim(),
         phoneNo: phoneNoController.text.trim(),
+        completedTasks: '',
       );
       SignUpController.instance.createUser(user);
     }
