@@ -6,9 +6,9 @@ class UserModel {
   final String email;
   final String phoneNo;
   final String password;
-  final String completedTasks;
+  final String completedTasks; // Değişiklik: completedTasks Listesi
 
-  const UserModel({
+  UserModel({
     this.id,
     required this.email,
     required this.password,
@@ -31,13 +31,14 @@ class UserModel {
   factory UserModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data()!;
+
     return UserModel(
       id: document.id,
       email: data["Email"],
       password: data["Password"],
       fullName: data["FullName"],
       phoneNo: data["Phone"],
-      completedTasks: '',
+      completedTasks: "",
     );
   }
 }
