@@ -6,7 +6,7 @@ class UserModel {
   final String email;
   final String phoneNo;
   final String password;
-  final String completedTasks; // Değişiklik: completedTasks Listesi
+  final List<dynamic> completedTasks; // Değişiklik: completedTasks Listesi
 
   UserModel({
     this.id,
@@ -38,7 +38,7 @@ class UserModel {
       password: data["Password"],
       fullName: data["FullName"],
       phoneNo: data["Phone"],
-      completedTasks: "",
+      completedTasks: [],
     );
   }
 }
