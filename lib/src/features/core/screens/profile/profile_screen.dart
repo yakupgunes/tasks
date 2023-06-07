@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kolaypara/src/constants/sizes.dart';
@@ -9,7 +11,6 @@ import '../../../authentication/models/user_model.dart';
 import 'widgets/profile_screen_form_widget.dart';
 
 class UpdateProfileScreen extends StatelessWidget {
-  // ignore: use_key_in_widget_constructors
   const UpdateProfileScreen({Key? key});
 
   @override

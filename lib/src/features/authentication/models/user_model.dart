@@ -6,7 +6,7 @@ class UserModel {
   final String email;
   final String phoneNo;
   final String password;
-  final List<dynamic> completedTasks; // Değişiklik: completedTasks Listesi
+  //final List<dynamic> completedTasks; // Değişiklik: completedTasks Listesi
 
   UserModel({
     this.id,
@@ -14,7 +14,7 @@ class UserModel {
     required this.password,
     required this.fullName,
     required this.phoneNo,
-    required this.completedTasks,
+    //required this.completedTasks,
   });
 
   tojson() {
@@ -23,7 +23,7 @@ class UserModel {
       "Email": email,
       "Phone": phoneNo,
       "Password": password,
-      "Completed Tasks": completedTasks,
+      //"Completed Tasks": completedTasks,
     };
   }
 
@@ -38,7 +38,7 @@ class UserModel {
       password: data["Password"],
       fullName: data["FullName"],
       phoneNo: data["Phone"],
-      completedTasks: [],
+      //completedTasks: [],
     );
   }
 }
