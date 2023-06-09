@@ -4,14 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:kolaypara/src/features/authentication/models/task_model.dart';
 import 'package:kolaypara/src/features/core/deneme_tasks_screen/deneme_task_content_screen.dart';
+import 'package:kolaypara/src/repository/authentication_repository/authentication_repository.dart';
 
 class TaskListScreen extends StatefulWidget {
+  const TaskListScreen({super.key}); // Oturum açılan e-posta adresi
   @override
   _TaskListScreenState createState() => _TaskListScreenState();
 }
 
 class _TaskListScreenState extends State<TaskListScreen> {
   late Stream<QuerySnapshot> _taskStream;
+  String? email;
 
   @override
   void initState() {
@@ -20,6 +23,20 @@ class _TaskListScreenState extends State<TaskListScreen> {
         .collection('Tasks')
         .orderBy('name')
         .snapshots();
+
+    _getEmail();
+  }
+
+  Future<void> _getEmail() async {
+    AuthenticationRepository.instance.email;
+
+    // Örnek bir simülasyon, 2 saniye bekleme
+    await Future.delayed(Duration(seconds: 1));
+
+    // E-posta adresini güncelle
+    setState(() {
+      email = AuthenticationRepository.instance.email.value;
+    });
   }
 
   @override
@@ -60,8 +77,11 @@ class _TaskListScreenState extends State<TaskListScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          TaskContentScreen(content: task.content),
+                      builder: (context) => TaskContentScreen(
+                        content: task.content,
+                        taskId: task.id,
+                        email: email!,
+                      ),
                     ),
                   );
                   // Görev tıklandığında yapılacak işlemler

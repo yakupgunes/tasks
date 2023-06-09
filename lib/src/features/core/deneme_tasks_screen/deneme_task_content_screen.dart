@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use, library_private_types_in_public_api
 
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -8,8 +9,15 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class TaskContentScreen extends StatefulWidget {
   final String content;
+  final String taskId;
+  final String email;
 
-  const TaskContentScreen({Key? key, required this.content}) : super(key: key);
+  const TaskContentScreen(
+      {Key? key,
+      required this.content,
+      required this.taskId,
+      required this.email})
+      : super(key: key);
 
   @override
   _TaskContentScreenState createState() => _TaskContentScreenState();
@@ -48,6 +56,48 @@ class _TaskContentScreenState extends State<TaskContentScreen> {
         ],
       ),
     );
+  }
+
+  Future<String?> getUserIDFromDatabase(String email) async {
+    try {
+      QuerySnapshot snapshot = await FirebaseFirestore.instance
+          .collection('Users')
+          .where('Email', isEqualTo: email)
+          .limit(1)
+          .get();
+
+      if (snapshot.docs.isNotEmpty) {
+        return snapshot.docs.first.id;
+      } else {
+        throw 'Kullanıcı bulunamadı.';
+      }
+    } catch (e) {
+      print('Kullanıcı ID alınırken bir hata oluştu: $e');
+      return null;
+    }
+  }
+
+  Future<void> updateUserField(
+      String userId, String field, dynamic value) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(userId)
+          .update({field: value});
+      print('Kullanıcı alanı güncellendi: $field');
+    } catch (e) {
+      print('Kullanıcı alanı güncellenirken bir hata oluştu: $e');
+    }
+  }
+
+  Future<void> _updateCompletedTasks(String taskId, String email) async {
+    String? userId = await getUserIDFromDatabase(
+        email); // E-posta adresine göre kullanıcı ID'sini al
+    if (userId != null) {
+      await updateUserField(userId, 'Completed Tasks',
+          [taskId]); // Kullanıcının "Completed Tasks" alanını güncelle
+      print('Görev tamamlandı: $taskId');
+    }
   }
 
   @override
@@ -153,7 +203,12 @@ class _TaskContentScreenState extends State<TaskContentScreen> {
                 ),
                 minimumSize: const Size(400, 50),
               ),
-              onPressed: isImageSelected ? () {} : _showAlertDialog,
+              onPressed: isImageSelected
+                  ? () {
+                      _updateCompletedTasks(
+                          widget.taskId, widget.email); // Görevi tamamla
+                    }
+                  : _showAlertDialog,
               child: Text('Görevi Yap'.toUpperCase()),
             ),
           ),

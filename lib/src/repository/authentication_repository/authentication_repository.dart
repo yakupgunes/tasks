@@ -13,6 +13,7 @@ class AuthenticationRepository extends GetxController {
   final _auth = FirebaseAuth.instance;
   late final Rx<User?> firebaseUser;
   var verificationId = ''.obs;
+  var email = ''.obs;
 
   @override
   void onReady() {
@@ -89,6 +90,8 @@ class AuthenticationRepository extends GetxController {
       if (existingUser.docs.isEmpty) {
         await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
+
+        this.email.value = email;
 
         firebaseUser.value != null
             ? Get.offAll(() => const MainPage())

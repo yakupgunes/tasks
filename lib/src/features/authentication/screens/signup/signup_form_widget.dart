@@ -134,7 +134,7 @@ class SignUpFormWidget extends StatelessWidget {
                       password: controller.password.text.trim(),
                       fullName: controller.fullName.text.trim(),
                       phoneNo: controller.phoneNo.text.trim(),
-                      //completedTasks: [],
+                      completedTasks: [],
                     );
                     SignUpController.instance.createUser(user);
                     //Get.to(() => const OTPScreen());
