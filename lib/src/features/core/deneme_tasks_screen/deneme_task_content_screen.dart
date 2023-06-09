@@ -58,7 +58,7 @@ class _TaskContentScreenState extends State<TaskContentScreen> {
     );
   }
 
-  Future<String?> getUserIDFromDatabase(String email) async {
+  /*Future<String?> getUserIDFromDatabase(String email) async {
     try {
       QuerySnapshot snapshot = await FirebaseFirestore.instance
           .collection('Users')
@@ -96,6 +96,52 @@ class _TaskContentScreenState extends State<TaskContentScreen> {
     if (userId != null) {
       await updateUserField(userId, 'Completed Tasks',
           [taskId]); // Kullanıcının "Completed Tasks" alanını güncelle
+      print('Görev tamamlandı: $taskId');
+    }
+  }
+  */
+
+  Future<String?> getUserIDFromDatabase(String email) async {
+    try {
+      QuerySnapshot snapshot = await FirebaseFirestore.instance
+          .collection('Users')
+          .where('Email', isEqualTo: email)
+          .limit(1)
+          .get();
+
+      if (snapshot.docs.isNotEmpty) {
+        return snapshot.docs.first.id;
+      } else {
+        throw 'Kullanıcı bulunamadı.';
+      }
+    } catch (e) {
+      print('Kullanıcı ID alınırken bir hata oluştu: $e');
+      return null;
+    }
+  }
+
+  Future<void> updateUserField(
+      String userId, String field, dynamic value) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(userId)
+          .update({field: value});
+      print('Kullanıcı alanı güncellendi: $field');
+    } catch (e) {
+      print('Kullanıcı alanı güncellenirken bir hata oluştu: $e');
+    }
+  }
+
+  Future<void> _updateCompletedTasks(String taskId, String email) async {
+    String? userId = await getUserIDFromDatabase(
+        email); // E-posta adresine göre kullanıcı ID'sini al
+    if (userId != null) {
+      await updateUserField(
+          userId,
+          'Completed Tasks',
+          FieldValue.arrayUnion(
+              [taskId])); // Kullanıcının "Completed Tasks" alanını güncelle
       print('Görev tamamlandı: $taskId');
     }
   }

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 import 'package:kolaypara/src/features/authentication/models/task_model.dart';
 import 'package:kolaypara/src/features/core/deneme_tasks_screen/deneme_task_content_screen.dart';
 import 'package:kolaypara/src/repository/authentication_repository/authentication_repository.dart';
@@ -27,7 +28,16 @@ class _TaskListScreenState extends State<TaskListScreen> {
     _getEmail();
   }
 
+  //deneme
   Future<void> _getEmail() async {
+    if (AuthenticationRepository.instance.email.isNotEmpty) {
+      setState(() {
+        email = AuthenticationRepository.instance.email.value;
+      });
+    }
+  }
+
+  /*Future<void> _getEmail() async {
     AuthenticationRepository.instance.email;
 
     // Örnek bir simülasyon, 2 saniye bekleme
@@ -37,7 +47,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
     setState(() {
       email = AuthenticationRepository.instance.email.value;
     });
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +90,9 @@ class _TaskListScreenState extends State<TaskListScreen> {
                       builder: (context) => TaskContentScreen(
                         content: task.content,
                         taskId: task.id,
-                        email: email!,
+                        email: email != null
+                            ? email!
+                            : '', // null değeri kontrol ediliyor
                       ),
                     ),
                   );
