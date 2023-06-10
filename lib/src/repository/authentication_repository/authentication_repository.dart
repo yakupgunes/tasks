@@ -136,17 +136,17 @@ class AuthenticationRepository extends GetxController {
     return null;
   }
 
-  //Future<void> logout() async => await _auth.signOut();
+  Future<void> logout() async => await _auth.signOut();
 
   //deneme
-  Future<void> logout() async {
-    await _auth.signOut();
+  // Future<void> logout() async {
+  //   await _auth.signOut();
 
-    // Gerekli değişkenleri ve işlevleri sıfırla
-    email.value = '';
-    // Diğer değişkenleri sıfırlayın
+  //   // Gerekli değişkenleri ve işlevleri sıfırla
+  //   email.value = '';
+  //   // Diğer değişkenleri sıfırlayın
 
-    // Giriş ekranına yönlendir
-    Get.offAll(() => const WelcomeScreen());
-  }
+  //   // Giriş ekranına yönlendir
+  //   Get.offAll(() => const WelcomeScreen());
+  // }
 }

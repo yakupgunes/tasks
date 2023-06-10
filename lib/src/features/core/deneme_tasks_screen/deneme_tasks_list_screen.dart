@@ -37,18 +37,6 @@ class _TaskListScreenState extends State<TaskListScreen> {
     }
   }
 
-  /*Future<void> _getEmail() async {
-    AuthenticationRepository.instance.email;
-
-    // Örnek bir simülasyon, 2 saniye bekleme
-    await Future.delayed(Duration(seconds: 1));
-
-    // E-posta adresini güncelle
-    setState(() {
-      email = AuthenticationRepository.instance.email.value;
-    });
-  }*/
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

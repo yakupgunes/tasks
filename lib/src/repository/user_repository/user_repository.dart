@@ -11,25 +11,6 @@ class UserRepository extends GetxController {
 
   final _db = FirebaseFirestore.instance;
 
-  /// Store user in FireStore
-  /*Future<void> createUser(UserModel user) async {
-    await _db.collection("Users").add(user.tojson()).whenComplete(() {
-      Get.snackbar(
-        tcreateUser1,
-        tcreateUser2,
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.green.withOpacity(0.1),
-        colorText: Colors.green,
-      );
-    }).catchError((error, stackTrace) {
-      Get.snackbar(tcreateUser3, tcreateUser4,
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.redAccent.withOpacity(0.1),
-          colorText: Colors.red);
-      print("HATA- $error" /*error.toString()*/);
-    });
-  }*/
-
   /// --CREATEUSER DEĞİŞTİRLECEK
   Future<void> createUser(UserModel user) async {
     final existingUserSnapshot = await _db
