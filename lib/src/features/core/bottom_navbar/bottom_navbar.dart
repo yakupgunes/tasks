@@ -47,8 +47,6 @@ class BottomNavBar extends StatelessWidget {
           icon: Icon(Icons.support_agent_rounded),
           label: tMenu3,
         ),
-
-        // Diğer butonlar için gerekli BottomNavigationBarItem'ları ekleyin
       ],
     );
   }
